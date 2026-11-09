@@ -3,731 +3,691 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PROTOTYPE: 10 variant webu DEF Farm (?variant=1..10)</title>
+  <title>DEF Farm | 10 Vizuálních Designů Webu (?variant=1..10)</title>
   <!--
     PROTOTYPE PLAN:
-    Ten radically different UI variants of the DEF Farm informational portal,
-    switchable via ?variant=1..10 URL search param and a floating bottom bar.
+    Ten radically different visual designs (color palettes, typography, card geometry,
+    and aesthetic direction) of the complete DEF Farm website, switchable via ?variant=1..10.
   -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,700;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,800&family=IBM+Plex+Mono:wght@400;600;700&family=Outfit:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Plus Jakarta Sans', sans-serif; }
-    .font-serif-editorial { font-family: 'Newsreader', Georgia, serif; }
-    .font-mono-code { font-family: 'JetBrains Mono', monospace; }
+    /* Unikátní typografické a vizuální systémy pro 10 designů */
+    .theme-1 { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #F6F4EE; color: #1C2826; }
+    .theme-1 h1, .theme-1 h2, .theme-1 .font-display { font-family: 'Fraunces', serif; }
+
+    .theme-2 { font-family: 'Outfit', sans-serif; background-color: #0F1412; color: #EAE6DF; }
+    .theme-2 h1, .theme-2 h2, .theme-2 .font-display { font-family: 'DM Serif Display', serif; letter-spacing: 0.01em; }
+
+    .theme-3 { font-family: 'Space Grotesk', sans-serif; background-color: #EAEAE6; color: #111111; }
+    .theme-3 .font-mono-tech { font-family: 'IBM Plex Mono', monospace; }
+
+    .theme-4 { font-family: 'Outfit', sans-serif; background-color: #FCFBF9; color: #2D2A32; }
+    .theme-4 h1, .theme-4 h2, .theme-4 .font-display { font-family: 'Fraunces', serif; }
+
+    .theme-5 { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #F3EFE6; color: #2B2118; }
+    .theme-5 h1, .theme-5 h2, .theme-5 h3, .theme-5 .font-display { font-family: 'Playfair Display', serif; }
+
+    .theme-6 { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #F1F3F5; color: #111827; }
+
+    .theme-7 { font-family: 'Outfit', sans-serif; background-color: #FFFFFF; color: #14281D; }
+
+    .theme-8 { font-family: 'Space Grotesk', sans-serif; background-color: #18181B; color: #F4F4F5; }
+    .theme-8 .font-mono-tech { font-family: 'IBM Plex Mono', monospace; }
+
+    .theme-9 { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #FAF9F6; color: #1E293B; }
+
+    .theme-10 { font-family: 'Outfit', sans-serif; background-color: #FDF8F3; color: #332218; }
+    .theme-10 h1, .theme-10 h2, .theme-10 .font-display { font-family: 'Fraunces', serif; }
   </style>
 </head>
-<body class="bg-stone-100 text-stone-900 antialiased pb-28 selection:bg-emerald-700 selection:text-white">
+<body class="antialiased pb-28 transition-colors duration-300">
 
-  <!-- HORNÍ STAVOVÁ LIŠTA PROTOTYPU (Surface the state) -->
-  <div class="bg-stone-950 text-stone-300 text-xs border-b border-stone-800 px-4 py-2 sticky top-0 z-50 flex flex-wrap items-center justify-between gap-2">
+  <!-- HORNÍ LIŠTA PROTOTYPU (Informace o aktivním vizuálním stylu) -->
+  <div class="bg-black text-stone-300 text-xs border-b border-stone-800 px-4 py-2 sticky top-0 z-50 flex flex-wrap items-center justify-between gap-2">
     <div class="flex items-center gap-2">
-      <span class="bg-amber-500 text-stone-950 font-extrabold px-2 py-0.5 rounded uppercase tracking-wider text-[10px]">UI Prototype</span>
-      <span id="state-banner-title" class="font-semibold text-white">Načítání varianty...</span>
+      <span class="bg-emerald-500 text-black font-extrabold px-2 py-0.5 rounded uppercase tracking-wider text-[10px]">Design Studio</span>
+      <span id="state-banner-title" class="font-semibold text-white">Načítání designu...</span>
     </div>
-    <div class="flex flex-wrap items-center gap-3 text-[11px] font-mono-code text-stone-400">
-      <span>David: IČO 23175923 (k.ú. Strunkovice, Volyně)</span>
-      <span class="text-stone-600">|</span>
-      <span>Bc. Eva: IČO 23723530 (k.ú. Rovná, Rovná 68)</span>
-      <span class="text-stone-600">|</span>
-      <span class="text-emerald-400">GPS: 49°17'19.7"N 13°57'34.7"E</span>
+    <div class="hidden md:flex items-center gap-2 text-[11px] text-stone-400">
+      <span>Stejný kompletní obsah • 10 unikátních vizuálních stylů</span>
     </div>
   </div>
 
-  <!-- HLAVNÍ KONTEJNER PRO VYKRESLENÍ AKTIVNÍ VARIANTY -->
-  <main id="prototype-root" class="min-h-screen"></main>
+  <!-- HLAVNÍ KONTEJNER PRO VYKRESLENÍ CELÉHO WEBU V DANÉM DESIGNU -->
+  <div id="design-root"></div>
 
-  <!-- PLOVOUCÍ PŘEPÍNAČ VARIANT DOLE UPROSTŘED (Floating Switcher) -->
-  <div class="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-2xl">
-    <div class="bg-stone-900/95 backdrop-blur-md text-white border border-stone-700 rounded-2xl shadow-2xl px-3 py-2.5 flex items-center justify-between gap-2">
+  <!-- PLOVOUCÍ PŘEPÍNAČ DESIGNŮ DOLE UPROSTŘED -->
+  <div class="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-3xl">
+    <div class="bg-stone-950/95 backdrop-blur-md text-white border border-stone-700 rounded-2xl shadow-2xl px-3 py-2.5 flex items-center justify-between gap-2">
       <button id="prev-variant" type="button" class="bg-stone-800 hover:bg-stone-700 active:scale-95 text-stone-200 font-bold px-3.5 py-2 rounded-xl transition flex items-center gap-1.5 text-xs shrink-0 border border-stone-700">
         <span>&larr;</span> <span class="hidden sm:inline">Předchozí</span>
       </button>
 
-      <div class="text-center min-w-0 flex-1 px-2">
-        <div class="text-[10px] uppercase tracking-widest text-emerald-400 font-bold">
-          Varianta <span id="variant-num">1</span> z 10 <span class="hidden md:inline text-stone-400 font-normal">(šipky &larr; &rarr;)</span>
+      <!-- Rychlé číslované tečky 1..10 -->
+      <div class="flex flex-col items-center min-w-0 flex-1 px-2">
+        <div id="variant-name" class="text-xs sm:text-sm font-bold truncate text-emerald-400 mb-1">
+          Design 1/10
         </div>
-        <div id="variant-name" class="text-xs sm:text-sm font-bold truncate text-white">
-          1. Rozcestník 2 subjektů
-        </div>
+        <div id="dots-container" class="flex items-center gap-1 flex-wrap justify-center"></div>
       </div>
 
-      <button id="next-variant" type="button" class="bg-emerald-600 hover:bg-emerald-500 active:scale-95 text-white font-bold px-3.5 py-2 rounded-xl transition flex items-center gap-1.5 text-xs shrink-0">
-        <span class="hidden sm:inline">Další</span> <span>&rarr;</span>
+      <button id="next-variant" type="button" class="bg-emerald-500 hover:bg-emerald-400 active:scale-95 text-stone-950 font-extrabold px-3.5 py-2 rounded-xl transition flex items-center gap-1.5 text-xs shrink-0">
+        <span class="hidden sm:inline">Další styl</span> <span>&rarr;</span>
       </button>
     </div>
   </div>
 
   <script>
     // ============================================================================
-    // SDÍLENÁ DATA OBOU HOSPODÁŘSTVÍ (100% ověřená podle zadání)
+    // KOMPLETNÍ OVĚŘENÁ DATA WEBU (Společná pro všech 10 vizuálních stylů)
     // ============================================================================
-    const DATA = {
-      brand: "DEF Farm",
+    const FARM = {
       david: {
         name: "Ing. David Filip",
         ico: "23175923",
-        role: "Samostatně hospodařící rolník • Polní výroba, skot, ovce & pila",
+        cadastral: "k.ú. Strunkovice nad Volyňkou a k.ú. Volyně",
         address: "Strunkovice nad Volyňkou 33, 387 01 Volyně",
-        cadastral: "k.ú. Strunkovice nad Volyňkou, k.ú. Volyně",
         phone: "+420 725 860 671",
         phoneRaw: "+420725860671",
         email: "filipdavid33@gmail.com",
-        crops: ["Potravinářské a krmné obiloviny", "Řepka olejná", "Pícniny (seno, senáž)", "Ozimý česnek", "Pastevní chov ovcí a skotu"],
-        sideBusiness: "Pila Strunkovice (pořez kulatiny, stavební řezivo, hranoly, prkna)",
         mapEmbed: "https://www.google.com/maps?q=Strunkovice+nad+Voly%C5%88kou+33,+387+01&output=embed",
         mapLink: "https://mapy.cz/zakladni?q=Strunkovice%20nad%20Voly%C5%88kou%2033"
       },
       eva: {
         name: "Bc. Eva Pitelková",
         ico: "23723530",
-        role: "Samostatně hospodařící rolník • Speciální plodiny & prodej ze dvora",
-        address: "Rovná 68 (u Strakonic)",
-        sídlo: "Strunkovice nad Volyňkou 33",
         cadastral: "výhradně k.ú. Rovná u Strakonic",
-        fieldGps: "49°17'19.7\"N 13°57'34.7\"E",
-        fieldGpsDecimal: "49.288806, 13.959639",
+        address: "Rovná 68 (okres Strakonice)",
+        sídlo: "Strunkovice nad Volyňkou 33, 387 01 Volyně",
+        gps: "49°17'19.7\"N 13°57'34.7\"E",
         phone: "+420 607 584 620",
         phoneRaw: "+420607584620",
         email: "evik.pitelkova@seznam.cz",
-        crops: ["Pravý český ozimý česnek (4 odrůdy)", "Levandule (záhony v k.ú. Rovná)", "V přípravě: jahody, cibule, brambory"],
-        mapEmbedHouse: "https://www.google.com/maps?q=Rovn%C3%A1+68,+Strakonice&output=embed",
         mapEmbedField: "https://www.google.com/maps?q=49.288806,13.959639&z=16&output=embed",
         mapLinkField: "https://mapy.cz/zakladni?q=49%C2%B017%2719.7%22N%2013%C2%B057%2734.7%22E"
       },
       garlic: [
-        { name: "Bjetin", type: "Raný paličák", cloves: "6–8 velkých stroužků", storage: "Střední až dlouhá", taste: "Ostrá, ušlechtilá chuť", harvest: "Začátek července" },
-        { name: "Slavín II", type: "Poloraný paličák", cloves: "8–11 fialových stroužků", storage: "Výborná (celá zima)", taste: "Výrazná, aromatická", harvest: "Polovina července" },
-        { name: "Rusinka", type: "Ozimý paličák", cloves: "5–8 masivních stroužků", storage: "Dlouhodobá", taste: "Plná, silně česneková", harvest: "Červenec" },
-        { name: "Nellinka", type: "Ozimý nepaličák", cloves: "12–15 pevných stroužků", storage: "Extrémní (až do pozdního jara)", taste: "Ušlechtilá, jemně fialová kresba", harvest: "Druhá polovina července" }
+        { name: "Bjetin", badge: "Raný paličák", cloves: "6–8 velkých stroužků", desc: "Velmi raná sklizeň hned začátkem července. Ostrá, ušlechtilá chuť bez nepříjemného dozvuku. Výborný pro letní spotřebu i uskladnění." },
+        { name: "Slavín II", badge: "Poloraný paličák", cloves: "8–11 fialových stroužků", desc: "Krásně fialově žíhané hlávky s pevnou stavbou. Vyniká velmi výraznou, aromatickou česnekovou chutí a skvělou skladovatelností." },
+        { name: "Rusinka", badge: "Ozimý paličák", cloves: "5–8 masivních stroužků", desc: "Robustní odrůda s velkými, pravidelnými stroužky, které se v kuchyni perfektně loupou. Plná, řízná chuť." },
+        { name: "Nellinka", badge: "Ozimý nepaličák", cloves: "12–15 pevných stroužků", desc: "Špičkový český nepaličák s jemnou fialovou kresbou. Extrémní trvanlivost – při správném uložení vydrží pevný až do pozdního jara." }
       ]
     };
 
     // ============================================================================
-    // DEFINICE 10 RADIKÁLNĚ ODLIŠNÝCH VARIANT
+    // DEFINICE 10 VIZUÁLNÍCH TÉMAT (Stejný obsah, 10x zcela jiný Design System)
     // ============================================================================
-    const VARIANTS = [
+    const DESIGNS = [
       {
         id: "1",
-        name: "Rozcestník 2 subjektů (SZIF Split-Screen)",
-        desc: "Strikní vizuální rozdělení 50/50 na podnik Ing. Davida Filipa a podnik Bc. Evy Pitelkové hned na první obrazovce.",
-        render: renderVariant1
+        title: "Severský přírodní minimalismus (Nordic Craft)",
+        subtitle: "Teplá krémová paleta, patkové nadpisy Fraunces, jemné přírodní stíny a klidná elegance",
+        themeClass: "theme-1",
+        nav: "bg-[#F6F4EE]/95 backdrop-blur border-b border-[#E2DEC9] text-[#1C2826]",
+        brandBadge: "bg-[#243E36] text-[#F6F4EE] px-3 py-1 rounded-full text-xs font-semibold",
+        hero: "bg-[#243E36] text-[#F6F4EE] rounded-[2rem] my-6 mx-4 p-8 md:p-16 shadow-xl",
+        heroBadge: "bg-[#325349] text-[#A3E635] border border-[#466D60] px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider",
+        btnPrimary: "bg-[#A3E635] hover:bg-[#BEF264] text-[#1C2826] font-bold px-6 py-3.5 rounded-full transition shadow-sm",
+        btnSecondary: "bg-[#325349] hover:bg-[#3E6559] text-white font-semibold px-6 py-3.5 rounded-full transition",
+        sectionHeading: "text-3xl md:text-4xl font-bold text-[#1C2826]",
+        card: "bg-white rounded-3xl p-7 border border-[#E5E0D5] shadow-sm hover:shadow-md transition",
+        cardHighlight: "bg-[#EAE5D7] rounded-3xl p-7 border border-[#D5CEBC]",
+        tag: "bg-[#EAE5D7] text-[#243E36] font-bold px-3 py-1 rounded-full text-xs",
+        pachtBox: "bg-[#1C2826] text-[#F6F4EE] rounded-[2rem] p-8 md:p-12 shadow-lg",
+        footer: "bg-[#151F1D] text-[#D1CFC9] border-t border-[#2A3835]"
       },
       {
         id: "2",
-        name: "Sezónní Tržiště & Katalog ze dvora",
-        desc: "Produktově orientovaný design s živým filtrem komodit, štítky dostupnosti a přímou volbou pěstitele.",
-        render: renderVariant2
+        title: "Tmavý prémiový řemeslný styl (Dark Earth & Gold)",
+        subtitle: "Břidlicově černý podklad, zlaté akcenty zralého obilí, luxusní kontrast pro OLED obrazovky",
+        themeClass: "theme-2",
+        nav: "bg-[#0F1412]/95 backdrop-blur border-b border-[#232D28] text-[#EAE6DF]",
+        brandBadge: "bg-[#D4AF37] text-[#0F1412] px-3 py-1 rounded-md text-xs font-extrabold uppercase",
+        hero: "bg-gradient-to-b from-[#18221E] to-[#0F1412] text-white border-b border-[#26352E] py-20 px-4",
+        heroBadge: "bg-[#1F2D27] text-[#E5C158] border border-[#3B5247] px-4 py-1 rounded text-xs uppercase tracking-widest",
+        btnPrimary: "bg-[#D4AF37] hover:bg-[#E5C158] text-[#0F1412] font-extrabold px-6 py-3.5 rounded-lg transition",
+        btnSecondary: "bg-[#1A2420] hover:bg-[#24332C] text-[#EAE6DF] border border-[#32443C] font-semibold px-6 py-3.5 rounded-lg transition",
+        sectionHeading: "text-3xl md:text-4xl text-[#F5F2EB]",
+        card: "bg-[#161E1B] rounded-2xl p-7 border border-[#26352E] text-[#EAE6DF]",
+        cardHighlight: "bg-[#1D2824] rounded-2xl p-7 border border-[#D4AF37]/40 text-[#EAE6DF]",
+        tag: "bg-[#26352E] text-[#E5C158] font-semibold px-2.5 py-1 rounded text-xs",
+        pachtBox: "bg-gradient-to-r from-[#1D2824] to-[#141C19] text-white rounded-2xl p-8 md:p-12 border border-[#D4AF37]/50",
+        footer: "bg-[#090C0B] text-[#9CA3AF] border-t border-[#1F2925]"
       },
       {
         id: "3",
-        name: "Webová Aplikace se Záložkami (Zero-Scroll Tabs)",
-        desc: "Žádné dlouhé rolování – veškerý obsah se přepíná v 5 okamžitých záložkách jako v mobilní aplikaci.",
-        render: renderVariant3
+        title: "Švýcarský agrární brutalismus (Swiss Technical Grid)",
+        subtitle: "Ostré pravé úhly, přiznané 2px černé linky, technické písmo Space Grotesk a maximální čitelnost",
+        themeClass: "theme-3",
+        nav: "bg-[#EAEAE6] border-b-2 border-black text-black",
+        brandBadge: "bg-[#FF5500] text-white px-2.5 py-1 text-xs font-bold uppercase border border-black",
+        hero: "bg-[#DCE2D7] border-b-2 border-black py-16 px-4",
+        heroBadge: "bg-white text-black border-2 border-black px-3 py-1 text-xs font-bold uppercase shadow-[3px_3px_0px_#000]",
+        btnPrimary: "bg-[#FF5500] hover:bg-[#E04B00] text-white font-bold px-6 py-3.5 border-2 border-black shadow-[4px_4px_0px_#000] active:translate-y-0.5 transition",
+        btnSecondary: "bg-white hover:bg-stone-100 text-black font-bold px-6 py-3.5 border-2 border-black shadow-[4px_4px_0px_#000] transition",
+        sectionHeading: "text-3xl md:text-4xl font-bold uppercase tracking-tight text-black",
+        card: "bg-white p-6 border-2 border-black shadow-[5px_5px_0px_#111]",
+        cardHighlight: "bg-[#DCE2D7] p-6 border-2 border-black shadow-[5px_5px_0px_#111]",
+        tag: "bg-black text-white font-mono-tech px-2 py-0.5 text-xs uppercase",
+        pachtBox: "bg-[#FF5500] text-black p-8 md:p-12 border-2 border-black shadow-[8px_8px_0px_#000]",
+        footer: "bg-black text-white border-t-2 border-black"
       },
       {
         id: "4",
-        name: "Geografický Atlas (Mapy & GPS Políčka)",
-        desc: "Dominantní kartografický pohled: Strunkovice 33 + Rovná 68 + přesná GPS parcela 49°17'19.7\"N 13°57'34.7\"E.",
-        render: renderVariant4
+        title: "Slunečná Provence & Levandule (Botanical Farmmarket)",
+        subtitle: "Jemné tóny levandule, šalvěje a světlého kamene – vřelý styl cílený na rodiny a prodej ze dvora",
+        themeClass: "theme-4",
+        nav: "bg-white/90 backdrop-blur border-b border-purple-100 text-[#2D2A32]",
+        brandBadge: "bg-purple-100 text-purple-900 px-3 py-1 rounded-full text-xs font-bold",
+        hero: "bg-gradient-to-br from-[#F3E8FF] via-[#ECFDF5] to-[#FEF3C7] text-[#2D2A32] py-20 px-4 border-b border-purple-100",
+        heroBadge: "bg-white/80 text-purple-800 border border-purple-200 px-4 py-1 rounded-full text-xs font-bold shadow-sm",
+        btnPrimary: "bg-[#6D28D9] hover:bg-[#5B21B6] text-white font-bold px-7 py-3.5 rounded-2xl shadow-md transition",
+        btnSecondary: "bg-white hover:bg-purple-50 text-[#2D2A32] border border-purple-200 font-bold px-7 py-3.5 rounded-2xl transition",
+        sectionHeading: "text-3xl md:text-4xl font-bold text-[#2D2A32]",
+        card: "bg-white rounded-[1.75rem] p-7 border border-purple-100/80 shadow-[0_10px_30px_-15px_rgba(109,40,217,0.12)]",
+        cardHighlight: "bg-gradient-to-br from-purple-50 to-emerald-50 rounded-[1.75rem] p-7 border border-purple-200",
+        tag: "bg-purple-100 text-purple-900 font-bold px-3 py-1 rounded-full text-xs",
+        pachtBox: "bg-[#2E1065] text-white rounded-[2rem] p-8 md:p-12 shadow-xl",
+        footer: "bg-[#1E1B24] text-purple-100"
       },
       {
         id: "5",
-        name: "Portál pro Vlastníky Půdy (Pacht & B2B)",
-        desc: "Seriózní agrární prezentace cílená na pacht pozemků v k.ú. Strunkovice, Volyně a Rovná + velkoobjemový odbyt.",
-        render: renderVariant5
+        title: "Tradiční sedlácká kronika (Heritage Estate)",
+        subtitle: "Klasická knižní typografie Playfair Display, barva pergamenu a hluboké lesní a měděné tóny",
+        themeClass: "theme-5",
+        nav: "bg-[#F3EFE6] border-b-2 border-[#D4CBB8] text-[#2B2118]",
+        brandBadge: "bg-[#7C2D12] text-[#F3EFE6] px-3 py-1 rounded text-xs font-semibold tracking-wider uppercase",
+        hero: "bg-[#EAE3D2] text-[#2B2118] py-20 px-4 border-b-2 border-[#D4CBB8]",
+        heroBadge: "bg-[#F3EFE6] text-[#7C2D12] border border-[#B8AC93] px-4 py-1 text-xs uppercase tracking-widest font-semibold",
+        btnPrimary: "bg-[#7C2D12] hover:bg-[#60210C] text-[#F3EFE6] font-semibold px-7 py-3.5 rounded transition",
+        btnSecondary: "bg-[#F3EFE6] hover:bg-white text-[#2B2118] border border-[#8C7D65] font-semibold px-7 py-3.5 rounded transition",
+        sectionHeading: "text-3xl md:text-4xl font-bold text-[#2B2118]",
+        card: "bg-[#FAF7F0] p-7 border border-[#D4CBB8] shadow-sm",
+        cardHighlight: "bg-[#EAE3D2] p-7 border-2 border-[#7C2D12]/30",
+        tag: "bg-[#E2D9C5] text-[#5C3A21] font-semibold px-2.5 py-0.5 text-xs uppercase tracking-wider",
+        pachtBox: "bg-[#2B2118] text-[#F3EFE6] p-8 md:p-12 border-4 border-double border-[#8C7D65]",
+        footer: "bg-[#1D1610] text-[#C7B299] border-t border-[#3E3024]"
       },
       {
         id: "6",
-        name: "Speciál Český Česnek (Agronomická Matice)",
-        desc: "Detailní srovnávací tabulka a karty odrůd Bjetin, Slavín II, Rusinka a Nellinka pro přímé odběratele.",
-        render: renderVariant6
+        title: "Moderní Bento Tech 2026 (Apple Agritech)",
+        subtitle: "Velké 32px zaoblené dlaždice na chladně šedém plátně, čistá bezpatková typografie a vysoká přehlednost",
+        themeClass: "theme-6",
+        nav: "bg-white/80 backdrop-blur-md border-b border-gray-200 text-gray-900",
+        brandBadge: "bg-emerald-600 text-white px-3 py-1 rounded-full text-xs font-bold",
+        hero: "bg-white rounded-[2.25rem] max-w-6xl mx-auto mt-6 p-8 md:p-16 shadow-sm border border-gray-200/80",
+        heroBadge: "bg-emerald-50 text-emerald-700 px-3.5 py-1 rounded-full text-xs font-extrabold uppercase tracking-wide",
+        btnPrimary: "bg-gray-900 hover:bg-gray-800 text-white font-bold px-6 py-3.5 rounded-2xl transition",
+        btnSecondary: "bg-gray-100 hover:bg-gray-200 text-gray-900 font-bold px-6 py-3.5 rounded-2xl transition",
+        sectionHeading: "text-3xl md:text-4xl font-extrabold tracking-tight text-gray-900",
+        card: "bg-white rounded-[2rem] p-7 border border-gray-200/80 shadow-sm",
+        cardHighlight: "bg-emerald-600 text-white rounded-[2rem] p-7 shadow-md",
+        tag: "bg-gray-100 text-gray-800 font-bold px-3 py-1 rounded-xl text-xs",
+        pachtBox: "bg-gray-900 text-white rounded-[2.25rem] p-8 md:p-12 shadow-xl",
+        footer: "bg-white text-gray-600 border-t border-gray-200"
       },
       {
         id: "7",
-        name: "Fixní Levý Panel (Sidebar Dashboard)",
-        desc: "Asymetrické rozvržení: vlevo trvale připnuté vizitky obou IČO s přímým voláním, vpravo obsah.",
-        render: renderVariant7
+        title: "Alpský Bio-Market (Fresh Leaf & White)",
+        subtitle: "Zářivě bílý podklad, svěží travní zelená, zaoblené odznaky a energie čerstvé sklizně",
+        themeClass: "theme-7",
+        nav: "bg-white border-b border-emerald-100 text-[#14281D]",
+        brandBadge: "bg-emerald-500 text-white px-3 py-1 rounded-lg text-xs font-extrabold",
+        hero: "bg-gradient-to-b from-emerald-50/80 to-white py-16 px-4 border-b border-emerald-100",
+        heroBadge: "bg-emerald-100 text-emerald-900 px-3.5 py-1 rounded-full text-xs font-extrabold uppercase",
+        btnPrimary: "bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-7 py-3.5 rounded-xl shadow-lg shadow-emerald-600/20 transition",
+        btnSecondary: "bg-white hover:bg-emerald-50 text-emerald-900 border-2 border-emerald-200 font-bold px-7 py-3.5 rounded-xl transition",
+        sectionHeading: "text-3xl md:text-4xl font-extrabold text-[#14281D]",
+        card: "bg-white rounded-2xl p-7 border-2 border-emerald-100 shadow-sm hover:border-emerald-300 transition",
+        cardHighlight: "bg-emerald-50 rounded-2xl p-7 border-2 border-emerald-400",
+        tag: "bg-emerald-100 text-emerald-800 font-bold px-2.5 py-1 rounded-lg text-xs",
+        pachtBox: "bg-[#14281D] text-white rounded-3xl p-8 md:p-12",
+        footer: "bg-[#0D1B13] text-emerald-100/80"
       },
       {
         id: "8",
-        name: "Moderní Bento Grid (Dlaždicová Mozaika)",
-        desc: "Současný technologický styl (Bento Box) skládající GPS, česnek, pilu a oba podniky do přehledné mřížky.",
-        render: renderVariant8
+        title: "Industriální Traktor & Pila (Heavy Machinery)",
+        subtitle: "Grafitová ocel, jantarová výstražná žlutá, technické štítky – zdůrazňuje polní techniku a pilu",
+        themeClass: "theme-8",
+        nav: "bg-zinc-900 border-b border-zinc-800 text-zinc-100",
+        brandBadge: "bg-amber-500 text-zinc-950 px-2.5 py-1 rounded font-extrabold text-xs uppercase",
+        hero: "bg-zinc-900 border-b border-zinc-800 py-20 px-4",
+        heroBadge: "bg-zinc-800 text-amber-400 border border-amber-500/40 px-3 py-1 rounded text-xs font-mono-tech uppercase",
+        btnPrimary: "bg-amber-500 hover:bg-amber-400 text-zinc-950 font-extrabold px-6 py-3.5 rounded-lg transition uppercase tracking-wide",
+        btnSecondary: "bg-zinc-800 hover:bg-zinc-700 text-white border border-zinc-700 font-bold px-6 py-3.5 rounded-lg transition",
+        sectionHeading: "text-3xl md:text-4xl font-bold uppercase tracking-wide text-white",
+        card: "bg-zinc-900/90 rounded-xl p-6 border border-zinc-800 border-l-4 border-l-amber-500",
+        cardHighlight: "bg-zinc-800 rounded-xl p-6 border border-amber-500/50",
+        tag: "bg-zinc-800 text-amber-400 font-mono-tech px-2.5 py-1 rounded text-xs border border-zinc-700",
+        pachtBox: "bg-amber-500 text-zinc-950 rounded-2xl p-8 md:p-12 font-medium",
+        footer: "bg-black text-zinc-400 border-t border-zinc-800"
       },
       {
         id: "9",
-        name: "Rychlá Mobilní Vizitka (Direct-Action)",
-        desc: "Maximálně zhuštěný rozcestník pro lidi v terénu: velká tlačítka Volat Davida, Volat Evu a Navigovat na pole.",
-        render: renderVariant9
+        title: "Rozdělené Studio s Bočním Panelem (Sidebar Split)",
+        subtitle: "Asymetrický layout: vlevo trvale připnutý tmavý panel s oběma IČO a kontakty, vpravo čistý přehled",
+        themeClass: "theme-9",
+        isSidebarLayout: true
       },
       {
         id: "10",
-        name: "Farmářský Zpravodaj (Editorial & Příběh)",
-        desc: "Časopisecká typografie vyprávějící příběh DEF Farm, dělbu práce mezi Strunkovicemi a Rovnou a sezónní kalendář.",
-        render: renderVariant10
+        title: "Teplý podzimní venkov (Warm Terracotta & Clay)",
+        subtitle: "Hřejivé tóny cihlové terakoty, pískovce a olivové zeleně – útulný, přirozený a lidský dojem",
+        themeClass: "theme-10",
+        nav: "bg-[#FDF8F3]/95 backdrop-blur border-b border-[#EADBC8] text-[#332218]",
+        brandBadge: "bg-[#C2410C] text-white px-3 py-1 rounded-full text-xs font-bold",
+        hero: "bg-[#F5EBE0] text-[#332218] py-20 px-4 border-b border-[#E3D5CA]",
+        heroBadge: "bg-[#FDF8F3] text-[#C2410C] border border-[#D5BDAF] px-3.5 py-1 rounded-full text-xs font-bold uppercase",
+        btnPrimary: "bg-[#C2410C] hover:bg-[#9A3412] text-white font-bold px-7 py-3.5 rounded-2xl shadow-sm transition",
+        btnSecondary: "bg-white hover:bg-[#F5EBE0] text-[#332218] border border-[#D5BDAF] font-bold px-7 py-3.5 rounded-2xl transition",
+        sectionHeading: "text-3xl md:text-4xl font-bold text-[#332218]",
+        card: "bg-white rounded-3xl p-7 border border-[#EADBC8] shadow-sm",
+        cardHighlight: "bg-[#F5EBE0] rounded-3xl p-7 border border-[#D5BDAF]",
+        tag: "bg-[#F5EBE0] text-[#9A3412] font-bold px-3 py-1 rounded-full text-xs",
+        pachtBox: "bg-[#432818] text-[#FDF8F3] rounded-3xl p-8 md:p-12",
+        footer: "bg-[#26170E] text-[#D5BDAF]"
       }
     ];
 
     // ============================================================================
-    // VARIANTA 1: ROZCESTNÍK 2 SUBJEKTŮ (SZIF SPLIT-SCREEN)
+    // UNIVERZÁLNÍ ŠABLONA PRO DESIGNY 1–8 A 10 (Stejný obsah, proměnný Design System)
     // ============================================================================
-    function renderVariant1() {
+    function renderStandardDesign(d) {
+      const isLightPacht = d.id === "3" || d.id === "8";
+      const isHighlightCardDark = d.id === "6";
+
       return `
-        <div class="bg-stone-900 text-white py-8 px-4 border-b border-stone-800 text-center">
-          <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight">DEF Farm <span class="text-emerald-400 font-normal">| Dva samostatné podniky</span></h1>
-          <p class="text-stone-400 text-sm mt-2 max-w-2xl mx-auto">
-            Společná rodinná prezentace dvou nezávislých zemědělských podnikatelů. Vyberte hospodářství podle komodity a katastru:
-          </p>
-        </div>
-
-        <div class="grid lg:grid-cols-2 min-h-[82vh]">
-          <!-- LEVÁ POLOVINA: DAVID -->
-          <div class="bg-stone-100 p-6 sm:p-12 border-b lg:border-b-0 lg:border-r border-stone-300 flex flex-col justify-between">
-            <div>
-              <div class="flex items-center justify-between gap-2 mb-6">
-                <span class="bg-stone-900 text-emerald-400 text-xs font-bold uppercase px-3 py-1.5 rounded-lg">Hospodářství č. 1 • Polní výroba & Pila</span>
-                <span class="font-mono-code text-xs font-bold bg-white px-3 py-1.5 rounded border border-stone-300">IČO: ${DATA.david.ico}</span>
+        <div class="${d.themeClass} min-h-screen">
+          <!-- Navigace -->
+          <header class="${d.nav} sticky top-9 z-40">
+            <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
+              <div class="flex items-center gap-3">
+                <a href="#" class="font-display font-extrabold text-xl tracking-tight">DEF Farm</a>
+                <span class="${d.brandBadge} hidden sm:inline-block">2 samostatné podniky</span>
               </div>
-              <h2 class="text-3xl sm:text-4xl font-extrabold text-stone-900">${DATA.david.name}</h2>
-              <p class="text-emerald-800 font-semibold text-sm mt-1 mb-6">Působnost výhradně: ${DATA.david.cadastral}</p>
-
-              <div class="bg-white rounded-2xl p-6 border border-stone-200 shadow-sm mb-6">
-                <h3 class="font-bold text-stone-900 mb-3 text-sm uppercase tracking-wider">Hlavní pilíře podniku:</h3>
-                <ul class="space-y-2 text-sm text-stone-700">
-                  <li>🌾 <strong>Orná půda:</strong> Obiloviny (pšenice, ječmen, oves), řepka olejná, hrách.</li>
-                  <li>🐑 <strong>Živočišná výroba:</strong> Pastevní chov ovcí, pícniny a příprava chovu masného skotu.</li>
-                  <li>🧄 <strong>Speciální plodiny:</strong> Ozimý český česnek (mechanizovaná výsadba).</li>
-                  <li>🪵 <strong>Přidružená výroba:</strong> Pásová pila Strunkovice – pořez kulatiny a stavební řezivo.</li>
-                </ul>
-              </div>
-
-              <div class="bg-stone-200/70 rounded-xl p-4 text-xs space-y-1.5 text-stone-800 mb-6">
-                <div>📍 <strong>Hospodářský dvůr a sídlo:</strong> ${DATA.david.address}</div>
-                <div>🗺️ <strong>Obhospodařované katastry:</strong> ${DATA.david.cadastral}</div>
-              </div>
-            </div>
-
-            <div class="space-y-3">
-              <div class="grid sm:grid-cols-2 gap-3">
-                <a href="tel:${DATA.david.phoneRaw}" class="bg-stone-900 hover:bg-stone-800 text-white font-bold py-3.5 px-4 rounded-xl text-center text-sm transition">
-                  📞 Volat: ${DATA.david.phone}
+              <nav class="hidden lg:flex items-center gap-6 text-sm font-medium opacity-90">
+                <a href="#subjekty" class="hover:underline">Naše 2 podniky</a>
+                <a href="#cesnek" class="hover:underline">Český česnek & Dvůr</a>
+                <a href="#polni" class="hover:underline">Polní výroba & Pila</a>
+                <a href="#puda" class="hover:underline">Pacht půdy</a>
+                <a href="#mapy" class="hover:underline">Mapy & Kontakty</a>
+              </nav>
+              <div class="flex items-center gap-2">
+                <a href="tel:${FARM.david.phoneRaw}" class="text-xs font-bold px-3 py-2 rounded-lg border border-current/20 hover:opacity-80">
+                  📞 David
                 </a>
-                <a href="mailto:${DATA.david.email}" class="bg-white hover:bg-stone-50 text-stone-900 border border-stone-300 font-bold py-3.5 px-4 rounded-xl text-center text-sm transition">
-                  ✉️ ${DATA.david.email}
-                </a>
-              </div>
-              <iframe title="Mapa Strunkovice 33" src="${DATA.david.mapEmbed}" class="w-full h-44 rounded-xl border border-stone-300"></iframe>
-            </div>
-          </div>
-
-          <!-- PRAVÁ POLOVINA: EVA -->
-          <div class="bg-emerald-950 text-stone-100 p-6 sm:p-12 flex flex-col justify-between">
-            <div>
-              <div class="flex items-center justify-between gap-2 mb-6">
-                <span class="bg-emerald-500 text-stone-950 text-xs font-bold uppercase px-3 py-1.5 rounded-lg">Hospodářství č. 2 • Speciální plodiny</span>
-                <span class="font-mono-code text-xs font-bold bg-emerald-900 text-emerald-200 px-3 py-1.5 rounded border border-emerald-700">IČO: ${DATA.eva.ico}</span>
-              </div>
-              <h2 class="text-3xl sm:text-4xl font-extrabold text-white">${DATA.eva.name}</h2>
-              <p class="text-emerald-400 font-semibold text-sm mt-1 mb-6">Působnost výhradně: ${DATA.eva.cadastral}</p>
-
-              <div class="bg-emerald-900/60 rounded-2xl p-6 border border-emerald-800 mb-6">
-                <h3 class="font-bold text-emerald-300 mb-3 text-sm uppercase tracking-wider">Pěstební sortiment (Prodej ze dvora):</h3>
-                <ul class="space-y-2 text-sm text-emerald-50">
-                  <li>🧄 <strong>Český ozimý česnek:</strong> Certifikované odrůdy <em>Bjetin, Slavín II, Rusinka, Nellinka</em>.</li>
-                  <li>💜 <strong>Aromatické byliny:</strong> Zakládání záhonů levandule v k.ú. Rovná.</li>
-                  <li>🍓 <strong>Plánovaný rozvoj:</strong> Příprava ploch pro jahody, cibuli a rané brambory.</li>
-                  <li>📦 <strong>Přímý prodej:</strong> Osobní odběr v Rovné 68 (nebo po dohodě ve Strunkovicích 33).</li>
-                </ul>
-              </div>
-
-              <div class="bg-emerald-900/40 border border-emerald-800/80 rounded-xl p-4 text-xs space-y-1.5 text-emerald-200 mb-6">
-                <div>🏡 <strong>Adresa výdeje / zázemí:</strong> ${DATA.eva.address}</div>
-                <div>🌱 <strong>GPS pěstebního políčka:</strong> <span class="font-mono-code text-white font-bold">${DATA.eva.fieldGps}</span></div>
-                <div>🗺️ <strong>Obhospodařovaný katastr:</strong> ${DATA.eva.cadastral}</div>
-              </div>
-            </div>
-
-            <div class="space-y-3">
-              <div class="grid sm:grid-cols-2 gap-3">
-                <a href="tel:${DATA.eva.phoneRaw}" class="bg-emerald-500 hover:bg-emerald-400 text-stone-950 font-bold py-3.5 px-4 rounded-xl text-center text-sm transition">
-                  📞 Volat: ${DATA.eva.phone}
-                </a>
-                <a href="mailto:${DATA.eva.email}" class="bg-emerald-900 hover:bg-emerald-800 text-white border border-emerald-700 font-bold py-3.5 px-4 rounded-xl text-center text-sm transition">
-                  ✉️ ${DATA.eva.email}
-                </a>
-              </div>
-              <iframe title="Mapa políčka Rovná GPS" src="${DATA.eva.mapEmbedField}" class="w-full h-44 rounded-xl border border-emerald-800"></iframe>
-            </div>
-          </div>
-        </div>
-      `;
-    }
-
-    // ============================================================================
-    // VARIANTA 2: SEZÓNNÍ TRŽIŠTĚ & KATALOG ZE DVORA (E-CATALOG)
-    // ============================================================================
-    function renderVariant2() {
-      return `
-        <div class="max-w-6xl mx-auto px-4 py-10">
-          <!-- Hlavička tržiště -->
-          <div class="bg-white rounded-3xl p-6 sm:p-10 border border-stone-200 shadow-sm mb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-            <div>
-              <span class="text-xs font-bold uppercase tracking-wider bg-emerald-100 text-emerald-900 px-3 py-1 rounded-full">Sezónní semafor sklizně • Podzim/Zima</span>
-              <h1 class="text-3xl sm:text-4xl font-extrabold text-stone-900 mt-3">Nabídka produkce DEF Farm</h1>
-              <p class="text-stone-600 text-sm mt-1">Každá položka má jasně uvedeného pěstitele, katastr původu a přímý telefon na hospodáře.</p>
-            </div>
-            <div class="flex flex-wrap gap-2">
-              <button onclick="filterCatalog('all')" class="cat-btn bg-stone-900 text-white text-xs font-bold px-4 py-2.5 rounded-xl">Všechny položky (8)</button>
-              <button onclick="filterCatalog('cesnek')" class="cat-btn bg-stone-100 hover:bg-stone-200 text-stone-800 text-xs font-bold px-4 py-2.5 rounded-xl">🧄 Česnek (4 odrůdy)</button>
-              <button onclick="filterCatalog('polni')" class="cat-btn bg-stone-100 hover:bg-stone-200 text-stone-800 text-xs font-bold px-4 py-2.5 rounded-xl">🌾 Polní & Pila (David)</button>
-            </div>
-          </div>
-
-          <!-- Produktová mřížka -->
-          <div id="catalog-grid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            ${DATA.garlic.map(g => `
-              <div data-cat="cesnek" class="catalog-item bg-white rounded-2xl p-5 border border-stone-200 shadow-sm flex flex-col justify-between">
-                <div>
-                  <div class="flex justify-between items-center mb-3">
-                    <span class="text-[11px] font-bold bg-amber-100 text-amber-900 px-2.5 py-0.5 rounded-full">Sklizeň: Červenec</span>
-                    <span class="text-[11px] font-semibold text-stone-500">${g.type}</span>
-                  </div>
-                  <h3 class="text-xl font-extrabold text-stone-900 mb-1">Česnek ${g.name}</h3>
-                  <p class="text-xs text-stone-600 mb-4 leading-relaxed">${g.taste}. Hlávka má ${g.cloves}. Skladovatelnost: ${g.storage}.</p>
-                </div>
-                <div class="border-t border-stone-100 pt-3 text-xs space-y-2">
-                  <div class="text-stone-500">Pěstitel: <strong class="text-stone-900">Bc. Eva Pitelková</strong> (k.ú. Rovná) & <strong class="text-stone-900">Ing. David Filip</strong> (k.ú. Strunkovice)</div>
-                  <div class="grid grid-cols-2 gap-1.5 pt-1">
-                    <a href="tel:${DATA.eva.phoneRaw}" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2 rounded-lg text-center text-[11px]">📞 Eva (Rovná 68)</a>
-                    <a href="tel:${DATA.david.phoneRaw}" class="bg-stone-800 hover:bg-stone-700 text-white font-bold py-2 rounded-lg text-center text-[11px]">📞 David (Strunkovice)</a>
-                  </div>
-                </div>
-              </div>
-            `).join('')}
-
-            <!-- Levandule a jahody -->
-            <div data-cat="cesnek" class="catalog-item bg-white rounded-2xl p-5 border border-stone-200 shadow-sm flex flex-col justify-between">
-              <div>
-                <div class="flex justify-between items-center mb-3">
-                  <span class="text-[11px] font-bold bg-purple-100 text-purple-900 px-2.5 py-0.5 rounded-full">V přípravě</span>
-                  <span class="text-[11px] font-semibold text-stone-500">k.ú. Rovná</span>
-                </div>
-                <h3 class="text-xl font-extrabold text-stone-900 mb-1">Levandule & Jahody</h3>
-                <p class="text-xs text-stone-600 mb-4 leading-relaxed">Zakládané plochy na parcele GPS 49°17'19.7"N 13°57'34.7"E u Rovné 68. Prodej ze dvora.</p>
-              </div>
-              <div class="border-t border-stone-100 pt-3 text-xs space-y-2">
-                <div class="text-stone-500">Pěstitel: <strong class="text-stone-900">${DATA.eva.name}</strong> (IČO ${DATA.eva.ico})</div>
-                <a href="tel:${DATA.eva.phoneRaw}" class="block bg-emerald-700 hover:bg-emerald-600 text-white font-bold py-2 rounded-lg text-center">📞 ${DATA.eva.phone}</a>
-              </div>
-            </div>
-
-            <!-- Obiloviny -->
-            <div data-cat="polni" class="catalog-item bg-white rounded-2xl p-5 border border-stone-200 shadow-sm flex flex-col justify-between">
-              <div>
-                <div class="flex justify-between items-center mb-3">
-                  <span class="text-[11px] font-bold bg-emerald-100 text-emerald-900 px-2.5 py-0.5 rounded-full">Sklizeň: Srpen</span>
-                  <span class="text-[11px] font-semibold text-stone-500">Velkoobjem / Pytle</span>
-                </div>
-                <h3 class="text-xl font-extrabold text-stone-900 mb-1">Obiloviny & Řepka</h3>
-                <p class="text-xs text-stone-600 mb-4 leading-relaxed">Pšenice, ječmen, oves, hrách a řepka olejná z k.ú. Strunkovice nad Volyňkou a k.ú. Volyně.</p>
-              </div>
-              <div class="border-t border-stone-100 pt-3 text-xs space-y-2">
-                <div class="text-stone-500">Pěstitel: <strong class="text-stone-900">${DATA.david.name}</strong> (IČO ${DATA.david.ico})</div>
-                <a href="tel:${DATA.david.phoneRaw}" class="block bg-stone-900 hover:bg-stone-800 text-white font-bold py-2 rounded-lg text-center">📞 ${DATA.david.phone}</a>
-              </div>
-            </div>
-
-            <!-- Ovce, skot a pícniny -->
-            <div data-cat="polni" class="catalog-item bg-white rounded-2xl p-5 border border-stone-200 shadow-sm flex flex-col justify-between">
-              <div>
-                <div class="flex justify-between items-center mb-3">
-                  <span class="text-[11px] font-bold bg-stone-200 text-stone-800 px-2.5 py-0.5 rounded-full">Celoročně</span>
-                  <span class="text-[11px] font-semibold text-stone-500">Chov & Pícniny</span>
-                </div>
-                <h3 class="text-xl font-extrabold text-stone-900 mb-1">Seno, Senáž & Chov</h3>
-                <p class="text-xs text-stone-600 mb-4 leading-relaxed">Kvalitní píce z trvalých travních porostů, pastevní chov ovcí a masného skotu (Strunkovice a Volyně).</p>
-              </div>
-              <div class="border-t border-stone-100 pt-3 text-xs space-y-2">
-                <div class="text-stone-500">Hospodář: <strong class="text-stone-900">${DATA.david.name}</strong></div>
-                <a href="tel:${DATA.david.phoneRaw}" class="block bg-stone-900 hover:bg-stone-800 text-white font-bold py-2 rounded-lg text-center">📞 ${DATA.david.phone}</a>
-              </div>
-            </div>
-
-            <!-- Pila Strunkovice -->
-            <div data-cat="polni" class="catalog-item bg-stone-900 text-white rounded-2xl p-5 border border-stone-800 shadow-sm flex flex-col justify-between">
-              <div>
-                <div class="flex justify-between items-center mb-3">
-                  <span class="text-[11px] font-bold bg-amber-500 text-stone-950 px-2.5 py-0.5 rounded-full">Na zakázku</span>
-                  <span class="text-[11px] font-semibold text-stone-400">Přidružená výroba</span>
-                </div>
-                <h3 class="text-xl font-extrabold text-white mb-1">Pila Strunkovice</h3>
-                <p class="text-xs text-stone-300 mb-4 leading-relaxed">Pásový pořez kulatiny, výroba stavebního řeziva, hranolů, fošen a latí ve Strunkovicích č.p. 33.</p>
-              </div>
-              <div class="border-t border-stone-800 pt-3 text-xs space-y-2">
-                <div class="text-stone-400">Provoz: <strong class="text-white">Strunkovice nad Volyňkou 33</strong></div>
-                <a href="tel:${DATA.david.phoneRaw}" class="block bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold py-2 rounded-lg text-center">📞 Poptat pořez</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      `;
-    }
-
-    // ============================================================================
-    // VARIANTA 3: INTERAKTIVNÍ ZÁLOŽKY (APP-LIKE TABBED INTERFACE)
-    // ============================================================================
-    function renderVariant3() {
-      return `
-        <div class="max-w-5xl mx-auto px-4 py-8">
-          <div class="bg-stone-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-stone-800">
-              <div>
-                <h1 class="text-2xl sm:text-3xl font-extrabold text-emerald-400">DEF Farm</h1>
-                <p class="text-xs text-stone-400 mt-0.5">Přepínejte sekce bez nutnosti rolovat stránkou</p>
-              </div>
-              <!-- Přepínač karet -->
-              <div class="flex flex-wrap gap-1.5 bg-stone-950 p-1.5 rounded-2xl border border-stone-800">
-                <button onclick="switchAppTab('tab-podniky')" id="btn-tab-podniky" class="app-tab-btn bg-emerald-600 text-white text-xs font-bold px-3.5 py-2 rounded-xl transition">1. Dva subjekty</button>
-                <button onclick="switchAppTab('tab-cesnek')" id="btn-tab-cesnek" class="app-tab-btn text-stone-400 hover:text-white text-xs font-bold px-3.5 py-2 rounded-xl transition">2. Česnek & Dvůr</button>
-                <button onclick="switchAppTab('tab-polni')" id="btn-tab-polni" class="app-tab-btn text-stone-400 hover:text-white text-xs font-bold px-3.5 py-2 rounded-xl transition">3. Polní & Pila</button>
-                <button onclick="switchAppTab('tab-puda')" id="btn-tab-puda" class="app-tab-btn text-stone-400 hover:text-white text-xs font-bold px-3.5 py-2 rounded-xl transition">4. Pacht půdy</button>
-                <button onclick="switchAppTab('tab-mapy')" id="btn-tab-mapy" class="app-tab-btn text-stone-400 hover:text-white text-xs font-bold px-3.5 py-2 rounded-xl transition">5. Mapy & GPS</button>
-              </div>
-            </div>
-
-            <!-- OBSAH ZÁLOŽKY 1: PODNIKY -->
-            <div id="tab-podniky" class="app-tab-pane pt-6 grid md:grid-cols-2 gap-6">
-              <div class="bg-stone-800/80 p-6 rounded-2xl border border-stone-700">
-                <span class="text-xs font-mono-code text-emerald-400">IČO: ${DATA.david.ico}</span>
-                <h2 class="text-2xl font-bold text-white mt-1">${DATA.david.name}</h2>
-                <p class="text-xs text-stone-300 mt-2 mb-4">Hospodaří v katastrech: <strong>${DATA.david.cadastral}</strong>. Základna a dvůr: <strong>${DATA.david.address}</strong>.</p>
-                <div class="flex flex-wrap gap-2">
-                  <a href="tel:${DATA.david.phoneRaw}" class="bg-emerald-600 text-white text-xs font-bold px-4 py-2.5 rounded-lg">📞 ${DATA.david.phone}</a>
-                  <a href="mailto:${DATA.david.email}" class="bg-stone-700 text-white text-xs font-bold px-4 py-2.5 rounded-lg">✉️ ${DATA.david.email}</a>
-                </div>
-              </div>
-              <div class="bg-stone-800/80 p-6 rounded-2xl border border-stone-700">
-                <span class="text-xs font-mono-code text-emerald-400">IČO: ${DATA.eva.ico}</span>
-                <h2 class="text-2xl font-bold text-white mt-1">${DATA.eva.name}</h2>
-                <p class="text-xs text-stone-300 mt-2 mb-4">Hospodaří výhradně v: <strong>${DATA.eva.cadastral}</strong>. Výdejní zázemí: <strong>${DATA.eva.address}</strong> (GPS pole: ${DATA.eva.fieldGps}).</p>
-                <div class="flex flex-wrap gap-2">
-                  <a href="tel:${DATA.eva.phoneRaw}" class="bg-emerald-600 text-white text-xs font-bold px-4 py-2.5 rounded-lg">📞 ${DATA.eva.phone}</a>
-                  <a href="mailto:${DATA.eva.email}" class="bg-stone-700 text-white text-xs font-bold px-4 py-2.5 rounded-lg">✉️ ${DATA.eva.email}</a>
-                </div>
-              </div>
-            </div>
-
-            <!-- OBSAH ZÁLOŽKY 2: ČESNEK -->
-            <div id="tab-cesnek" class="app-tab-pane hidden pt-6">
-              <div class="mb-4 flex flex-wrap justify-between items-center gap-2">
-                <h2 class="text-xl font-bold text-white">4 odrůdy českého ozimého česneku (výsadba listopad)</h2>
-                <span class="text-xs bg-emerald-900 text-emerald-300 px-3 py-1 rounded-full">Odběr: Rovná 68 / Strunkovice 33</span>
-              </div>
-              <div class="grid sm:grid-cols-2 gap-4">
-                ${DATA.garlic.map(g => `
-                  <div class="bg-stone-800 p-4 rounded-xl border border-stone-700">
-                    <div class="flex justify-between"><strong class="text-emerald-400">${g.name}</strong><span class="text-xs text-stone-400">${g.type}</span></div>
-                    <p class="text-xs text-stone-300 mt-1">${g.cloves} • ${g.taste} • Sklizeň: ${g.harvest}</p>
-                  </div>
-                `).join('')}
-              </div>
-            </div>
-
-            <!-- OBSAH ZÁLOŽKY 3: POLNÍ VÝROBA & PILA -->
-            <div id="tab-polni" class="app-tab-pane hidden pt-6 space-y-4">
-              <div class="bg-stone-800 p-5 rounded-xl border border-stone-700">
-                <h3 class="font-bold text-white text-lg">Polní a živočišná výroba (${DATA.david.name})</h3>
-                <p class="text-xs text-stone-300 mt-1">Pěstování pšenice, ječmene, ovsa, hrachu a řepky olejné v k.ú. Strunkovice nad Volyňkou a k.ú. Volyně. Pastevní chov ovcí a produkce sena a senáže.</p>
-              </div>
-              <div class="bg-stone-800 p-5 rounded-xl border border-stone-700">
-                <h3 class="font-bold text-amber-400 text-lg">Pila Strunkovice nad Volyňkou 33</h3>
-                <p class="text-xs text-stone-300 mt-1">Přidružený pořez kulatiny na pásové pile, stavební řezivo, hranoly, prkna a střešní latě na míru.</p>
-              </div>
-            </div>
-
-            <!-- OBSAH ZÁLOŽKY 4: PACHT PŮDY -->
-            <div id="tab-puda" class="app-tab-pane hidden pt-6">
-              <div class="bg-emerald-950 border border-emerald-800 p-6 rounded-2xl">
-                <h3 class="text-xl font-bold text-white mb-2">Pacht pozemků bez prostředníků</h3>
-                <p class="text-sm text-emerald-200 mb-4">Hledáme k pachtu ornou půdu a louky: v <strong>k.ú. Strunkovice nad Volyňkou a k.ú. Volyně</strong> (${DATA.david.name}) a v <strong>k.ú. Rovná u Strakonic</strong> (${DATA.eva.name}).</p>
-                <div class="flex flex-wrap gap-3">
-                  <a href="tel:${DATA.david.phoneRaw}" class="bg-emerald-500 text-stone-950 font-bold text-xs px-4 py-2.5 rounded-lg">📞 Volyňsko (David): ${DATA.david.phone}</a>
-                  <a href="tel:${DATA.eva.phoneRaw}" class="bg-white text-stone-950 font-bold text-xs px-4 py-2.5 rounded-lg">📞 Rovná (Bc. Eva): ${DATA.eva.phone}</a>
-                </div>
-              </div>
-            </div>
-
-            <!-- OBSAH ZÁLOŽKY 5: MAPY A GPS -->
-            <div id="tab-mapy" class="app-tab-pane hidden pt-6 grid md:grid-cols-2 gap-6">
-              <div>
-                <p class="text-xs font-bold text-emerald-400 mb-2">1. Strunkovice nad Volyňkou 33 (${DATA.david.name})</p>
-                <iframe title="Strunkovice" src="${DATA.david.mapEmbed}" class="w-full h-56 rounded-xl border border-stone-700"></iframe>
-              </div>
-              <div>
-                <p class="text-xs font-bold text-emerald-400 mb-2">2. Políčko v k.ú. Rovná u Rovné 68 (${DATA.eva.fieldGps})</p>
-                <iframe title="Rovná GPS" src="${DATA.eva.mapEmbedField}" class="w-full h-56 rounded-xl border border-stone-700"></iframe>
-              </div>
-            </div>
-          </div>
-        </div>
-      `;
-    }
-
-    // ============================================================================
-    // VARIANTA 4: GEOGRAFICKÝ ATLAS (MAP-FIRST LAYOUT)
-    // ============================================================================
-    function renderVariant4() {
-      return `
-        <div class="max-w-6xl mx-auto px-4 py-8">
-          <div class="mb-8 text-center">
-            <span class="text-xs font-mono-code font-bold uppercase bg-stone-900 text-emerald-400 px-3 py-1 rounded">Přesná lokalizace provozoven a pozemků</span>
-            <h1 class="text-3xl font-extrabold text-stone-900 mt-2">Kde přesně hospodaříme a vydáváme</h1>
-          </div>
-
-          <!-- Dvě velké mapové karty nahoře -->
-          <div class="grid lg:grid-cols-2 gap-8 mb-10">
-            <!-- Lokalita 1: Strunkovice -->
-            <div class="bg-white rounded-3xl overflow-hidden border-2 border-stone-300 shadow-sm">
-              <div class="h-72 bg-stone-200 relative">
-                <iframe title="Strunkovice 33" src="${DATA.david.mapEmbed}" class="w-full h-full border-0"></iframe>
-              </div>
-              <div class="p-6">
-                <div class="flex justify-between items-center mb-2">
-                  <span class="text-xs font-bold uppercase text-stone-600">Katastry: ${DATA.david.cadastral}</span>
-                  <span class="text-xs font-mono-code font-bold bg-stone-100 px-2 py-0.5 rounded">IČO: ${DATA.david.ico}</span>
-                </div>
-                <h2 class="text-2xl font-extrabold text-stone-900">${DATA.david.name}</h2>
-                <p class="text-sm text-stone-600 mt-1 mb-4">Hospodářský dvůr, sklad obilí, chov ovcí a pilařská výroba na adrese <strong>${DATA.david.address}</strong>.</p>
-                <div class="flex flex-wrap gap-2">
-                  <a href="tel:${DATA.david.phoneRaw}" class="bg-stone-900 text-white text-xs font-bold px-4 py-2.5 rounded-xl">📞 ${DATA.david.phone}</a>
-                  <a href="mailto:${DATA.david.email}" class="bg-stone-100 text-stone-800 text-xs font-bold px-4 py-2.5 rounded-xl">✉️ ${DATA.david.email}</a>
-                  <a href="${DATA.david.mapLink}" target="_blank" class="bg-emerald-50 text-emerald-800 text-xs font-bold px-4 py-2.5 rounded-xl">🗺️ Mapy.cz</a>
-                </div>
-              </div>
-            </div>
-
-            <!-- Lokalita 2: Rovná 68 + GPS políčka -->
-            <div class="bg-white rounded-3xl overflow-hidden border-2 border-emerald-600 shadow-sm">
-              <div class="h-72 bg-stone-200 relative">
-                <iframe title="Políčko Rovná GPS" src="${DATA.eva.mapEmbedField}" class="w-full h-full border-0"></iframe>
-              </div>
-              <div class="p-6">
-                <div class="flex justify-between items-center mb-2">
-                  <span class="text-xs font-bold uppercase text-emerald-700">Katastr: ${DATA.eva.cadastral}</span>
-                  <span class="text-xs font-mono-code font-bold bg-emerald-50 text-emerald-900 px-2 py-0.5 rounded">IČO: ${DATA.eva.ico}</span>
-                </div>
-                <h2 class="text-2xl font-extrabold text-stone-900">${DATA.eva.name}</h2>
-                <p class="text-sm text-stone-600 mt-1 mb-3">
-                  Zázemí a výdej: <strong>${DATA.eva.address}</strong>. Samotné políčko s česnekem a levandulí leží na souřadnicích <strong class="font-mono-code text-stone-900">${DATA.eva.fieldGps}</strong>.
-                </p>
-                <div class="flex flex-wrap gap-2">
-                  <a href="tel:${DATA.eva.phoneRaw}" class="bg-emerald-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl">📞 ${DATA.eva.phone}</a>
-                  <a href="mailto:${DATA.eva.email}" class="bg-stone-100 text-stone-800 text-xs font-bold px-4 py-2.5 rounded-xl">✉️ ${DATA.eva.email}</a>
-                  <a href="${DATA.eva.mapLinkField}" target="_blank" class="bg-emerald-50 text-emerald-800 text-xs font-bold px-4 py-2.5 rounded-xl">📍 GPS Políčka v Mapy.cz</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      `;
-    }
-
-    // ============================================================================
-    // VARIANTA 5: B2B & PACHTOVNÍ SPECIÁL (PRO VLASTNÍKY PŮDY)
-    // ============================================================================
-    function renderVariant5() {
-      return `
-        <div class="max-w-5xl mx-auto px-4 py-12">
-          <div class="bg-stone-900 text-white rounded-3xl p-8 sm:p-12 border border-stone-800 mb-10">
-            <span class="text-xs font-bold uppercase tracking-widest text-emerald-400">Péče o půdu v Pošumaví a na Strakonicku</span>
-            <h1 class="text-3xl sm:text-5xl font-extrabold mt-3 leading-tight">Pronajměte svou půdu přímo mladým místním hospodářům</h1>
-            <p class="text-stone-300 mt-4 text-base leading-relaxed max-w-3xl">
-              Nejsme anonymní korporát. Hospodaříme osobně na traktoru i na poli, vracíme do půdy organickou hmotu a udržujeme meze. Pachtovní smlouvu uzavíráte přímo s konkrétním podnikatelem podle katastrálního území vašeho pozemku:
-            </p>
-
-            <div class="grid md:grid-cols-2 gap-6 mt-8">
-              <div class="bg-stone-800 p-6 rounded-2xl border border-stone-700">
-                <h2 class="text-xl font-bold text-emerald-400">1. Katastry Strunkovice nad Volyňkou & Volyně</h2>
-                <p class="text-xs text-stone-300 mt-2 mb-4">Orná půda a trvalé travní porosty pro pěstování obilovin, pícnin a pastvu ovcí a skotu.</p>
-                <div class="text-xs space-y-1 text-stone-200 mb-5">
-                  <div>👤 <strong>Pachtýř:</strong> ${DATA.david.name} (IČO: ${DATA.david.ico})</div>
-                  <div>📍 <strong>Sídlo:</strong> ${DATA.david.address}</div>
-                </div>
-                <a href="tel:${DATA.david.phoneRaw}" class="inline-block bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs px-5 py-3 rounded-xl">
-                  📞 Zavolat Ing. Filipovi: ${DATA.david.phone}
-                </a>
-              </div>
-
-              <div class="bg-stone-800 p-6 rounded-2xl border border-stone-700">
-                <h2 class="text-xl font-bold text-emerald-400">2. Katastr Rovná u Strakonic</h2>
-                <p class="text-xs text-stone-300 mt-2 mb-4">Pozemky pro pěstování českého česneku, levandule, jahod, brambor a zeleniny s šetrnou agrotechnikou.</p>
-                <div class="text-xs space-y-1 text-stone-200 mb-5">
-                  <div>👤 <strong>Pachtýřka:</strong> ${DATA.eva.name} (IČO: ${DATA.eva.ico})</div>
-                  <div>📍 <strong>Zázemí v obci:</strong> ${DATA.eva.address}</div>
-                </div>
-                <a href="tel:${DATA.eva.phoneRaw}" class="inline-block bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs px-5 py-3 rounded-xl">
-                  📞 Zavolat Bc. Pitelkové: ${DATA.eva.phone}
+                <a href="tel:${FARM.eva.phoneRaw}" class="text-xs font-bold px-3 py-2 rounded-lg border border-current/20 hover:opacity-80">
+                  📞 Bc. Eva
                 </a>
               </div>
             </div>
-          </div>
+          </header>
 
-          <!-- Výhody pachtu -->
-          <div class="grid sm:grid-cols-3 gap-6">
-            <div class="bg-white p-6 rounded-2xl border border-stone-200">
-              <h3 class="font-bold text-stone-900 mb-2">Férové pachtovné & Naturálie</h3>
-              <p class="text-xs text-stone-600 leading-relaxed">Možnost výplaty pachtovného převodem na účet, v hotovosti nebo formou naturálií (krmné obilí, konzumní česnek Bjetin/Slavín II/Rusinka/Nellinka).</p>
+          <!-- Hero Sekce -->
+          <section class="${d.hero}">
+            <div class="max-w-4xl mx-auto text-center">
+              <span class="inline-block ${d.heroBadge} mb-5">
+                k.ú. Strunkovice nad Volyňkou • k.ú. Volyně • k.ú. Rovná u Strakonic
+              </span>
+              <h1 class="font-display text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight">
+                Poctivé rodinné hospodaření s úctou k půdě a krajině
+              </h1>
+              <p class="mt-5 text-base sm:text-lg opacity-85 max-w-2xl mx-auto leading-relaxed">
+                Společná informační prezentace dvou nezávislých zemědělských podnikatelů – <strong>${FARM.david.name}</strong> a <strong>${FARM.eva.name}</strong>. Od ručně ošetřovaného českého česneku a levandule až po polní výrobu, pastevní chov a pořez dřeva.
+              </p>
+              <div class="mt-8 flex flex-wrap justify-center gap-4">
+                <a href="#cesnek" class="${d.btnPrimary}">Sezónní prodej & Český česnek</a>
+                <a href="#subjekty" class="${d.btnSecondary}">Rozdělení obou podniků (IČO)</a>
+              </div>
             </div>
-            <div class="bg-white p-6 rounded-2xl border border-stone-200">
-              <h3 class="font-bold text-stone-900 mb-2">Právní servis zdarma</h3>
-              <p class="text-xs text-stone-600 leading-relaxed">Připravíme přehlednou pachtovní smlouvu a pohlídáme agrotechnické lhůty i dotační pravidla bez jakýchkoliv starostí pro vlastníka.</p>
-            </div>
-            <div class="bg-white p-6 rounded-2xl border border-stone-200">
-              <h3 class="font-bold text-stone-900 mb-2">Sousedská dostupnost</h3>
-              <p class="text-xs text-stone-600 leading-relaxed">Bydlíme a pracujeme přímo ve Strunkovicích nad Volyňkou 33 a v Rovné 68. Kdykoliv se s námi potkáte osobně.</p>
-            </div>
-          </div>
-        </div>
-      `;
-    }
+          </section>
 
-    // ============================================================================
-    // VARIANTA 6: SPECIÁL ČESKÝ ČESNEK (AGRONOMICKÁ MATICE)
-    // ============================================================================
-    function renderVariant6() {
-      return `
-        <div class="max-w-6xl mx-auto px-4 py-10">
-          <div class="bg-emerald-950 text-white rounded-3xl p-8 sm:p-10 mb-8 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
-            <div>
-              <span class="text-xs font-bold uppercase bg-emerald-800 text-emerald-200 px-3 py-1 rounded-full">Podzimní sadba • Červencová sklizeň</span>
-              <h1 class="text-3xl sm:text-4xl font-extrabold mt-3">Pravý český ozimý česnek ze Strakonicka</h1>
-              <p class="text-emerald-200 text-sm mt-2 max-w-2xl">
-                Pěstováno na políčku <strong>GPS ${DATA.eva.fieldGps}</strong> v k.ú. Rovná (<strong>${DATA.eva.name}</strong>) a v k.ú. Strunkovice nad Volyňkou (<strong>${DATA.david.name}</strong>).
+          <!-- 1. DVA SAMOSTATNÉ SUBJEKTY (Transparentní pro SZIF i zákazníky) -->
+          <section id="subjekty" class="max-w-6xl mx-auto px-4 py-16">
+            <div class="mb-10">
+              <span class="${d.tag}">Transparentní struktura hospodaření</span>
+              <h2 class="font-display ${d.sectionHeading} mt-3">Dva samostatné zemědělské subjekty</h2>
+              <p class="mt-2 text-sm opacity-80 max-w-3xl">
+                Každý z našich podniků hospodaří samostatně na vlastním IČO a ve svém katastrálním území. Zákazníci i vlastníci půdy tak vždy jednají přímo s konkrétním hospodářem:
               </p>
             </div>
-            <div class="bg-emerald-900/80 p-4 rounded-2xl border border-emerald-700 text-xs space-y-1.5 shrink-0">
-              <div class="font-bold text-white">Přímé rezervace ze sklizně:</div>
-              <div>📞 Bc. Eva (Rovná 68): <a href="tel:${DATA.eva.phoneRaw}" class="text-emerald-300 font-bold underline">${DATA.eva.phone}</a></div>
-              <div>📞 Ing. David (Strunkovice 33): <a href="tel:${DATA.david.phoneRaw}" class="text-emerald-300 font-bold underline">${DATA.david.phone}</a></div>
-            </div>
-          </div>
 
-          <!-- Srovnávací tabulka 4 odrůd -->
-          <div class="bg-white rounded-2xl border border-stone-200 shadow-sm overflow-x-auto mb-8">
-            <table class="w-full text-left border-collapse">
-              <thead>
-                <tr class="bg-stone-900 text-white text-xs uppercase tracking-wider">
-                  <th class="p-4">Odrůda</th>
-                  <th class="p-4">Typ česneku</th>
-                  <th class="p-4">Stroužky v hlávce</th>
-                  <th class="p-4">Chuťový profil</th>
-                  <th class="p-4">Skladovatelnost</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-stone-200 text-sm">
-                ${DATA.garlic.map(g => `
-                  <tr class="hover:bg-stone-50">
-                    <td class="p-4 font-extrabold text-stone-900">${g.name}</td>
-                    <td class="p-4"><span class="bg-emerald-100 text-emerald-900 text-xs font-bold px-2.5 py-1 rounded">${g.type}</span></td>
-                    <td class="p-4 text-stone-700">${g.cloves}</td>
-                    <td class="p-4 text-stone-700">${g.taste}</td>
-                    <td class="p-4 font-semibold text-stone-900">${g.storage}</td>
-                  </tr>
-                `).join('')}
-              </tbody>
-            </table>
-          </div>
+            <div class="grid md:grid-cols-2 gap-8">
+              <!-- Karta 1: Ing. David Filip -->
+              <div class="${d.card} flex flex-col justify-between">
+                <div>
+                  <div class="flex flex-wrap justify-between items-center gap-2 mb-4">
+                    <span class="${d.tag}">Subjekt č. 1 • Polní výroba, chov & pila</span>
+                    <span class="font-mono text-xs font-bold opacity-75">IČO: ${FARM.david.ico}</span>
+                  </div>
+                  <h3 class="font-display text-2xl sm:text-3xl font-bold">${FARM.david.name}</h3>
+                  <p class="text-xs font-bold opacity-75 mt-1 mb-4">Obhospodařované katastry: ${FARM.david.cadastral}</p>
+                  <p class="text-sm opacity-85 leading-relaxed mb-5">
+                    Zaměřuji se na konvenční polní výrobu (potravinářské a krmné obiloviny, řepka olejná, pícniny), výsadbu ozimého česneku, pastevní chov ovcí a masného skotu a přidruženou pilařskou výrobu.
+                  </p>
+                  <div class="text-xs space-y-1.5 opacity-90 border-t border-current/10 pt-4 mb-6">
+                    <div>📍 <strong>Sídlo a hospodářský dvůr:</strong> ${FARM.david.address}</div>
+                    <div>🗺️ <strong>Působnost:</strong> výhradně ${FARM.david.cadastral}</div>
+                    <div>✉️ <strong>E-mail:</strong> <a href="mailto:${FARM.david.email}" class="underline font-semibold">${FARM.david.email}</a></div>
+                  </div>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                  <a href="tel:${FARM.david.phoneRaw}" class="${d.btnPrimary} !py-2.5 !px-5 text-xs">
+                    📞 Zavolat: ${FARM.david.phone}
+                  </a>
+                  <a href="#mapy" class="${d.btnSecondary} !py-2.5 !px-5 text-xs">
+                    Mapa dvora Strunkovice &darr;
+                  </a>
+                </div>
+              </div>
 
-          <!-- Spodní blok ostatní výroby -->
-          <div class="grid md:grid-cols-2 gap-6">
-            <div class="bg-white p-6 rounded-2xl border border-stone-200">
-              <h3 class="font-bold text-stone-900">Další produkce v k.ú. Rovná (${DATA.eva.name}, IČO ${DATA.eva.ico})</h3>
-              <p class="text-xs text-stone-600 mt-1">Výsadba levandule a příprava ploch pro jahody, cibuli a brambory. E-mail: <a href="mailto:${DATA.eva.email}" class="underline font-semibold">${DATA.eva.email}</a>.</p>
+              <!-- Karta 2: Bc. Eva Pitelková -->
+              <div class="${d.card} flex flex-col justify-between">
+                <div>
+                  <div class="flex flex-wrap justify-between items-center gap-2 mb-4">
+                    <span class="${d.tag}">Subjekt č. 2 • Speciální plodiny & prodej ze dvora</span>
+                    <span class="font-mono text-xs font-bold opacity-75">IČO: ${FARM.eva.ico}</span>
+                  </div>
+                  <h3 class="font-display text-2xl sm:text-3xl font-bold">${FARM.eva.name}</h3>
+                  <p class="text-xs font-bold opacity-75 mt-1 mb-4">Obhospodařovaný katastr: ${FARM.eva.cadastral}</p>
+                  <p class="text-sm opacity-85 leading-relaxed mb-5">
+                    Věnuji se pěstování speciálních plodin s vysokým podílem ruční péče pro přímý prodej koncovým zákazníkům – zejména 4 odrůdám českého ozimého česneku, levanduli a přípravě ploch pro jahody, cibuli a brambory.
+                  </p>
+                  <div class="text-xs space-y-1.5 opacity-90 border-t border-current/10 pt-4 mb-6">
+                    <div>🏡 <strong>Zázemí a výdej v obci:</strong> ${FARM.eva.address} <span class="opacity-70">(Sídlo OSVČ: ${FARM.eva.sídlo})</span></div>
+                    <div>🌱 <strong>GPS pěstebního políčka:</strong> <span class="font-mono font-bold">${FARM.eva.gps}</span> (k.ú. Rovná)</div>
+                    <div>✉️ <strong>E-mail:</strong> <a href="mailto:${FARM.eva.email}" class="underline font-semibold">${FARM.eva.email}</a></div>
+                  </div>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                  <a href="tel:${FARM.eva.phoneRaw}" class="${d.btnPrimary} !py-2.5 !px-5 text-xs">
+                    📞 Zavolat: ${FARM.eva.phone}
+                  </a>
+                  <a href="#mapy" class="${d.btnSecondary} !py-2.5 !px-5 text-xs">
+                    Mapa políčka v Rovné &darr;
+                  </a>
+                </div>
+              </div>
             </div>
-            <div class="bg-white p-6 rounded-2xl border border-stone-200">
-              <h3 class="font-bold text-stone-900">Polní výroba & Pila v k.ú. Strunkovice a Volyně (${DATA.david.name}, IČO ${DATA.david.ico})</h3>
-              <p class="text-xs text-stone-600 mt-1">Obiloviny, řepka, pícniny, chov ovcí a pořez dřeva ve Strunkovicích 33. E-mail: <a href="mailto:${DATA.david.email}" class="underline font-semibold">${DATA.david.email}</a>.</p>
+          </section>
+
+          <!-- 2. SEZÓNNÍ PRODEJ ZE DVORA & 4 ODRŮDY ČESNEKU -->
+          <section id="cesnek" class="max-w-6xl mx-auto px-4 py-12">
+            <div class="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
+              <div>
+                <span class="${d.tag}">Sklizeň Červenec • Podzimní výsadba v zemi</span>
+                <h2 class="font-display ${d.sectionHeading} mt-3">Pravý český česnek a prodej ze dvora</h2>
+              </div>
+              <div class="text-xs opacity-80">
+                Výdejní místa po telefonické domluvě: <strong>Rovná 68</strong> (${FARM.eva.name}) nebo <strong>Strunkovice nad Volyňkou 33</strong> (${FARM.david.name})
+              </div>
             </div>
-          </div>
+
+            <!-- 4 karty odrůd česneku -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+              ${FARM.garlic.map(g => `
+                <div class="${d.card} flex flex-col justify-between">
+                  <div>
+                    <div class="flex justify-between items-center gap-2 mb-3">
+                      <span class="${d.tag}">${g.badge}</span>
+                    </div>
+                    <h3 class="font-display text-2xl font-bold mb-1">Odrůda ${g.name}</h3>
+                    <p class="text-xs font-bold opacity-70 mb-3">${g.cloves}</p>
+                    <p class="text-xs opacity-85 leading-relaxed">${g.desc}</p>
+                  </div>
+                  <div class="mt-5 pt-3 border-t border-current/10 text-[11px] opacity-75">
+                    Konzumní i sadbový • Cena upřesněna před sklizní
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+
+            <!-- Levandule, jahody a pravidla odběru -->
+            <div class="grid md:grid-cols-2 gap-6">
+              <div class="${d.cardHighlight}">
+                <span class="text-xs font-bold uppercase tracking-wider ${isHighlightCardDark ? 'text-emerald-200' : 'opacity-75'}">Pěstební políčko k.ú. Rovná • GPS ${FARM.eva.gps}</span>
+                <h3 class="font-display text-2xl font-bold mt-2 mb-2">Levandule, jahody, cibule a brambory (V přípravě)</h3>
+                <p class="text-sm ${isHighlightCardDark ? 'text-emerald-50' : 'opacity-85'} leading-relaxed mb-4">
+                  Na pozemku v k.ú. Rovná (${FARM.eva.name}) postupně rozšiřujeme pěstování o aromatickou levanduli a připravujeme záhony pro sezónní jahody, cibuli a brambory. Výhledově pro vás chystáme také krytý samoobslužný stánek s platbou přes QR kód.
+                </p>
+                <a href="tel:${FARM.eva.phoneRaw}" class="inline-block text-xs font-bold underline">
+                  📞 Kontakt pro přímý odběr v Rovné 68: ${FARM.eva.phone}
+                </a>
+              </div>
+
+              <div class="${d.card}">
+                <span class="${d.tag}">Jak u nás nakoupit</span>
+                <h3 class="font-display text-2xl font-bold mt-3 mb-3">Pravidla prodeje ze dvora</h3>
+                <ul class="text-xs sm:text-sm space-y-2.5 opacity-90">
+                  <li><strong>1. Zavolejte nám předem:</strong> Jsme často v traktoru nebo na poli. Po zavolání vám objednávku nachystáme na konkrétní hodinu.</li>
+                  <li><strong>2. Zvolte si bližší výdejní místo:</strong> Odběr v <strong>Rovné 68</strong> u Strakonic nebo ve <strong>Strunkovicích nad Volyňkou 33</strong>.</li>
+                  <li><strong>3. Pohodlná platba:</strong> V hotovosti nebo okamžitou QR platbou v mobilním bankovnictví přímo danému pěstiteli.</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <!-- 3. POLNÍ VÝROBA, CHOV ZVÍŘAT A PILA STRUNKOVICE -->
+          <section id="polni" class="max-w-6xl mx-auto px-4 py-12">
+            <div class="mb-8">
+              <span class="${d.tag}">Hospodářství ${FARM.david.name} • IČO ${FARM.david.ico}</span>
+              <h2 class="font-display ${d.sectionHeading} mt-3">Polní výroba, pastevní chov a Pila Strunkovice</h2>
+              <p class="text-sm opacity-80 mt-1">Hospodaření v katastrech <strong>${FARM.david.cadastral}</strong> se zázemím ve Strunkovicích nad Volyňkou 33.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+              <div class="${d.card}">
+                <h3 class="font-display text-xl font-bold mb-2">🌾 Obiloviny, řepka a hrách</h3>
+                <p class="text-xs sm:text-sm opacity-85 leading-relaxed">
+                  Pěstování potravinářské a krmné pšenice, ječmene, ovsa, hrachu a řepky olejné. Dodávky pro zemědělské výkupy i prodej menšího množství krmného obilí a slámy po dohodě.
+                </p>
+              </div>
+              <div class="${d.card}">
+                <h3 class="font-display text-xl font-bold mb-2">🐑 Pastevní chov a pícniny</h3>
+                <p class="text-xs sm:text-sm opacity-85 leading-relaxed">
+                  Údržba trvalých travních porostů v k.ú. Strunkovice nad Volyňkou a k.ú. Volyně pastvou ovcí, produkce kvalitního sena a senáže a postupné budování chovu masného skotu.
+                </p>
+              </div>
+              <div class="${d.card}">
+                <h3 class="font-display text-xl font-bold mb-2">🪵 Pásová pila Strunkovice</h3>
+                <p class="text-xs sm:text-sm opacity-85 leading-relaxed mb-4">
+                  V rámci rodinné přidružené výroby ve Strunkovicích 33 provádíme zakázkový pořez kulatiny a výrobu stavebního řeziva, hranolů, fošen, prken a střešních latí.
+                </p>
+                <a href="tel:${FARM.david.phoneRaw}" class="text-xs font-bold underline">📞 Poptat pořez: ${FARM.david.phone}</a>
+              </div>
+            </div>
+          </section>
+
+          <!-- 4. PRO VLASTNÍKY PŮDY (Pacht pozemků) -->
+          <section id="puda" class="max-w-6xl mx-auto px-4 py-12">
+            <div class="${d.pachtBox}">
+              <div class="max-w-3xl">
+                <span class="text-xs font-bold uppercase tracking-widest opacity-80">Pro majitele orné půdy a luk</span>
+                <h2 class="font-display text-3xl sm:text-4xl font-bold mt-2 mb-4">
+                  Vlastníte pozemky v k.ú. Strunkovice nad Volyňkou, Volyně nebo Rovná?
+                </h2>
+                <p class="text-sm sm:text-base opacity-90 leading-relaxed mb-6">
+                  Hledáme k dlouhodobému pachtu či odkupu zemědělskou půdu. Hospodaříme šetrně, s důrazem na organické hnojení, střídání plodin a čistotu krajiny. Smlouvu uzavíráte přímo s konkrétním hospodářem podle katastru, veškerou administrativu vyřídíme za vás a pachtovné vyplácíme spolehlivě v penězích nebo naturáliích (obilí, česnek).
+                </p>
+                <div class="flex flex-wrap gap-3">
+                  <a href="tel:${FARM.david.phoneRaw}" class="${isLightPacht ? 'bg-black text-white' : 'bg-white text-stone-950'} font-bold text-xs sm:text-sm px-5 py-3 rounded-xl">
+                    📞 Pozemky Strunkovice & Volyně (Ing. Filip): ${FARM.david.phone}
+                  </a>
+                  <a href="tel:${FARM.eva.phoneRaw}" class="${isLightPacht ? 'bg-white text-black border border-black' : 'bg-emerald-500 text-stone-950'} font-bold text-xs sm:text-sm px-5 py-3 rounded-xl">
+                    📞 Pozemky k.ú. Rovná (Bc. Pitelková): ${FARM.eva.phone}
+                  </a>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- 5. DVOJICE INTERAKTIVNÍCH MAP A KONTAKTŮ -->
+          <section id="mapy" class="max-w-6xl mx-auto px-4 py-12">
+            <div class="mb-8">
+              <span class="${d.tag}">Přesná navigace na dvůr i na pole</span>
+              <h2 class="font-display ${d.sectionHeading} mt-3">Kde nás najdete</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+              <!-- Mapa 1: Strunkovice 33 -->
+              <div class="${d.card}">
+                <div class="flex justify-between items-start gap-2 mb-2">
+                  <h3 class="font-display text-xl font-bold">1. ${FARM.david.name} – Dvůr Strunkovice 33</h3>
+                  <span class="font-mono text-xs opacity-70">IČO ${FARM.david.ico}</span>
+                </div>
+                <p class="text-xs opacity-80 mb-4">
+                  Adresa: <strong>${FARM.david.address}</strong> • Katastry: <strong>${FARM.david.cadastral}</strong>
+                </p>
+                <div class="rounded-2xl overflow-hidden border border-current/15 h-56 mb-4">
+                  <iframe title="Mapa Strunkovice nad Volyňkou 33" src="${FARM.david.mapEmbed}" class="w-full h-full border-0" loading="lazy"></iframe>
+                </div>
+                <div class="flex flex-wrap justify-between items-center gap-2 text-xs">
+                  <a href="tel:${FARM.david.phoneRaw}" class="font-bold underline">📞 ${FARM.david.phone}</a>
+                  <a href="mailto:${FARM.david.email}" class="underline">${FARM.david.email}</a>
+                  <a href="${FARM.david.mapLink}" target="_blank" class="font-bold underline">🗺️ Otevřít v Mapy.cz &rarr;</a>
+                </div>
+              </div>
+
+              <!-- Mapa 2: Rovná 68 + GPS políčka -->
+              <div class="${d.card}">
+                <div class="flex justify-between items-start gap-2 mb-2">
+                  <h3 class="font-display text-xl font-bold">2. ${FARM.eva.name} – Rovná 68 & Políčko</h3>
+                  <span class="font-mono text-xs opacity-70">IČO ${FARM.eva.ico}</span>
+                </div>
+                <p class="text-xs opacity-80 mb-4">
+                  Zázemí: <strong>${FARM.eva.address}</strong> • GPS políčka v k.ú. Rovná: <strong class="font-mono">${FARM.eva.gps}</strong>
+                </p>
+                <div class="rounded-2xl overflow-hidden border border-current/15 h-56 mb-4">
+                  <iframe title="Mapa políčka Rovná GPS" src="${FARM.eva.mapEmbedField}" class="w-full h-full border-0" loading="lazy"></iframe>
+                </div>
+                <div class="flex flex-wrap justify-between items-center gap-2 text-xs">
+                  <a href="tel:${FARM.eva.phoneRaw}" class="font-bold underline">📞 ${FARM.eva.phone}</a>
+                  <a href="mailto:${FARM.eva.email}" class="underline">${FARM.eva.email}</a>
+                  <a href="${FARM.eva.mapLinkField}" target="_blank" class="font-bold underline">📍 GPS políčka v Mapy.cz &rarr;</a>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Patička -->
+          <footer class="${d.footer} py-10 px-4 mt-12">
+            <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 text-xs">
+              <div>
+                <strong>DEF Farm</strong> – Společná prezentace samostatných zemědělských podnikatelů:
+                <strong>${FARM.david.name}</strong> (IČO ${FARM.david.ico}) & <strong>${FARM.eva.name}</strong> (IČO ${FARM.eva.ico}).
+              </div>
+              <div class="opacity-75">Před návštěvou prosíme vždy zavolejte předem.</div>
+            </div>
+          </footer>
         </div>
       `;
     }
 
     // ============================================================================
-    // VARIANTA 7: ASYMETRICKÝ LEVÝ PANEL (SIDEBAR DASHBOARD)
+    // SPECIÁLNÍ DESIGN 9: ROZDĚLENÉ STUDIO S PEVNÝM LEVÝM PANELEM (SIDEBAR SPLIT)
     // ============================================================================
-    function renderVariant7() {
+    function renderSidebarDesign() {
       return `
-        <div class="max-w-7xl mx-auto px-4 py-8 grid lg:grid-cols-12 gap-8">
-          <!-- LEVÝ PŘIPNUTÝ PANEL S VIZITKAMI OBOU IČO -->
-          <aside class="lg:col-span-4 space-y-5">
-            <div class="bg-stone-900 text-white p-6 rounded-2xl border border-stone-800">
-              <h1 class="text-2xl font-extrabold text-emerald-400">DEF Farm</h1>
-              <p class="text-xs text-stone-400 mt-1">Dva samostatně hospodařící zemědělské subjekty</p>
+        <div class="theme-9 min-h-screen lg:grid lg:grid-cols-12">
+          <!-- Pevný levý tmavý panel (4 sloupce) -->
+          <aside class="lg:col-span-4 xl:col-span-3 bg-slate-900 text-white p-6 sm:p-8 lg:sticky lg:top-9 lg:h-[calc(100vh-2.25rem)] lg:overflow-y-auto flex flex-col justify-between border-r border-slate-800">
+            <div>
+              <div class="flex items-center justify-between mb-6">
+                <span class="text-2xl font-extrabold tracking-tight text-emerald-400">DEF Farm</span>
+                <span class="text-[11px] bg-slate-800 text-slate-300 px-2.5 py-1 rounded-full">2 nezávislé OSVČ</span>
+              </div>
+
+              <!-- Vizitka 1 v panelu -->
+              <div class="bg-slate-800/90 rounded-2xl p-4 border border-slate-700 mb-4">
+                <div class="flex justify-between text-[11px] text-emerald-400 font-mono mb-1">
+                  <span>Subjekt č. 1</span>
+                  <span>IČO: ${FARM.david.ico}</span>
+                </div>
+                <h2 class="text-lg font-bold text-white">${FARM.david.name}</h2>
+                <p class="text-xs text-slate-300 mt-1">Výhradně <strong>${FARM.david.cadastral}</strong></p>
+                <p class="text-xs text-slate-400 mt-1">📍 ${FARM.david.address}</p>
+                <div class="mt-3 pt-3 border-t border-slate-700 flex flex-col gap-1.5 text-xs">
+                  <a href="tel:${FARM.david.phoneRaw}" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2 px-3 rounded-lg text-center">📞 ${FARM.david.phone}</a>
+                  <a href="mailto:${FARM.david.email}" class="text-slate-300 hover:text-white text-center truncate">${FARM.david.email}</a>
+                </div>
+              </div>
+
+              <!-- Vizitka 2 v panelu -->
+              <div class="bg-slate-800/90 rounded-2xl p-4 border border-slate-700">
+                <div class="flex justify-between text-[11px] text-emerald-400 font-mono mb-1">
+                  <span>Subjekt č. 2</span>
+                  <span>IČO: ${FARM.eva.ico}</span>
+                </div>
+                <h2 class="text-lg font-bold text-white">${FARM.eva.name}</h2>
+                <p class="text-xs text-slate-300 mt-1">Výhradně <strong>${FARM.eva.cadastral}</strong></p>
+                <p class="text-xs text-slate-400 mt-1">🏡 ${FARM.eva.address} • GPS: ${FARM.eva.gps}</p>
+                <div class="mt-3 pt-3 border-t border-slate-700 flex flex-col gap-1.5 text-xs">
+                  <a href="tel:${FARM.eva.phoneRaw}" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2 px-3 rounded-lg text-center">📞 ${FARM.eva.phone}</a>
+                  <a href="mailto:${FARM.eva.email}" class="text-slate-300 hover:text-white text-center truncate">${FARM.eva.email}</a>
+                </div>
+              </div>
             </div>
 
-            <!-- Karta Evy -->
-            <div class="bg-white p-5 rounded-2xl border-l-4 border-emerald-600 shadow-sm">
-              <div class="flex justify-between text-xs font-mono-code text-stone-500">
-                <span>k.ú. Rovná</span>
-                <span>IČO: ${DATA.eva.ico}</span>
-              </div>
-              <h2 class="text-xl font-extrabold text-stone-900 mt-1">${DATA.eva.name}</h2>
-              <p class="text-xs text-stone-600 mt-1 mb-3">Český česnek, levandule, jahody, zelenina</p>
-              <div class="text-xs space-y-1 text-stone-700 bg-stone-50 p-3 rounded-lg mb-3">
-                <div>🏡 Adresa: <strong>${DATA.eva.address}</strong></div>
-                <div>🌱 Pole GPS: <strong class="font-mono-code">${DATA.eva.fieldGps}</strong></div>
-                <div>✉️ <a href="mailto:${DATA.eva.email}" class="underline">${DATA.eva.email}</a></div>
-              </div>
-              <a href="tel:${DATA.eva.phoneRaw}" class="block w-full bg-emerald-600 hover:bg-emerald-500 text-white text-center font-bold text-xs py-2.5 rounded-xl">
-                📞 Volat Bc. Evu: ${DATA.eva.phone}
-              </a>
-            </div>
-
-            <!-- Karta Davida -->
-            <div class="bg-white p-5 rounded-2xl border-l-4 border-stone-900 shadow-sm">
-              <div class="flex justify-between text-xs font-mono-code text-stone-500">
-                <span>k.ú. Strunkovice & Volyně</span>
-                <span>IČO: ${DATA.david.ico}</span>
-              </div>
-              <h2 class="text-xl font-extrabold text-stone-900 mt-1">${DATA.david.name}</h2>
-              <p class="text-xs text-stone-600 mt-1 mb-3">Obiloviny, řepka, pícniny, česnek, ovce & Pila</p>
-              <div class="text-xs space-y-1 text-stone-700 bg-stone-50 p-3 rounded-lg mb-3">
-                <div>📍 Dvůr: <strong>${DATA.david.address}</strong></div>
-                <div>✉️ <a href="mailto:${DATA.david.email}" class="underline">${DATA.david.email}</a></div>
-              </div>
-              <a href="tel:${DATA.david.phoneRaw}" class="block w-full bg-stone-900 hover:bg-stone-800 text-white text-center font-bold text-xs py-2.5 rounded-xl">
-                📞 Volat Ing. Davida: ${DATA.david.phone}
-              </a>
+            <div class="mt-6 pt-4 border-t border-slate-800 text-[11px] text-slate-400">
+              Rychlá navigace vpravo: Česnek • Polní výroba • Pila • Pacht půdy • Mapy
             </div>
           </aside>
 
-          <!-- PRAVÝ OBSAHOVÝ SLOUPEC -->
-          <div class="lg:col-span-8 space-y-6">
-            <div class="bg-white p-6 sm:p-8 rounded-2xl border border-stone-200 shadow-sm">
-              <h3 class="text-xl font-extrabold text-stone-900 mb-4">Sezónní prodej: Český ozimý česnek (4 odrůdy)</h3>
+          <!-- Pravá obsahová část (8 sloupců) -->
+          <div class="lg:col-span-8 xl:col-span-9 p-6 sm:p-12 space-y-12">
+            <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm">
+              <span class="text-xs font-bold uppercase text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full">Pošumaví & Strakonicko</span>
+              <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Sezónní prodej ze dvora a polní výroba</h1>
+              <p class="text-slate-600 text-sm sm:text-base mt-2 leading-relaxed">
+                V levém panelu najdete přímé kontakty na oba naše samostatné podniky. Níže si prohlédněte kompletní přehled pěstovaných odrůd českého česneku, polních komodit, pilařské výroby a přesné mapy obou lokalit.
+              </p>
+            </div>
+
+            <!-- 4 odrůdy česneku -->
+            <div>
+              <h2 class="text-2xl font-extrabold text-slate-900 mb-4">🧄 Pravý český ozimý česnek (4 odrůdy)</h2>
               <div class="grid sm:grid-cols-2 gap-4">
-                ${DATA.garlic.map(g => `
-                  <div class="p-4 rounded-xl bg-stone-50 border border-stone-200">
-                    <div class="font-bold text-stone-900">${g.name} <span class="text-xs font-normal text-emerald-700">(${g.type})</span></div>
-                    <p class="text-xs text-stone-600 mt-1">${g.cloves} • ${g.taste}</p>
+                ${FARM.garlic.map(g => `
+                  <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                    <div class="flex justify-between items-center mb-2">
+                      <strong class="text-lg font-bold text-slate-900">${g.name}</strong>
+                      <span class="text-xs font-bold bg-emerald-100 text-emerald-900 px-2.5 py-0.5 rounded-full">${g.badge}</span>
+                    </div>
+                    <p class="text-xs font-semibold text-slate-500 mb-2">${g.cloves}</p>
+                    <p class="text-xs text-slate-600 leading-relaxed">${g.desc}</p>
                   </div>
                 `).join('')}
               </div>
             </div>
 
-            <div class="bg-white p-6 sm:p-8 rounded-2xl border border-stone-200 shadow-sm">
-              <h3 class="text-xl font-extrabold text-stone-900 mb-2">Polní komodity, Pastevní chov a Pila Strunkovice</h3>
-              <p class="text-sm text-stone-600 leading-relaxed mb-4">
-                V katastrech Strunkovice nad Volyňkou a Volyně pěstujeme obiloviny, řepku a pícniny, chováme ovce a provozujeme pásovou pilu pro pořez kulatiny a stavební řezivo.
-              </p>
-              <div class="grid sm:grid-cols-2 gap-4">
-                <iframe title="Mapa Strunkovice" src="${DATA.david.mapEmbed}" class="w-full h-48 rounded-xl border border-stone-200"></iframe>
-                <iframe title="Mapa pole Rovná" src="${DATA.eva.mapEmbedField}" class="w-full h-48 rounded-xl border border-stone-200"></iframe>
+            <!-- Ostatní výroba a Pacht -->
+            <div class="grid md:grid-cols-2 gap-6">
+              <div class="bg-white p-6 rounded-2xl border border-slate-200">
+                <h3 class="font-bold text-slate-900 text-lg mb-2">Levandule, jahody & zelenina (${FARM.eva.name})</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                  Pěstování v <strong>${FARM.eva.cadastral}</strong> na parcele <strong>${FARM.eva.gps}</strong> se zázemím v <strong>${FARM.eva.address}</strong>.
+                </p>
+              </div>
+              <div class="bg-white p-6 rounded-2xl border border-slate-200">
+                <h3 class="font-bold text-slate-900 text-lg mb-2">Obiloviny, řepka, ovce & Pila (${FARM.david.name})</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                  Polní a živočišná výroba v <strong>${FARM.david.cadastral}</strong> a pořez dřeva ve <strong>${FARM.david.address}</strong>.
+                </p>
+              </div>
+            </div>
+
+            <!-- Mapy -->
+            <div class="grid md:grid-cols-2 gap-6">
+              <div class="bg-white p-5 rounded-2xl border border-slate-200">
+                <p class="text-xs font-bold text-slate-900 mb-2">1. Dvůr a Pila: ${FARM.david.address}</p>
+                <iframe title="Strunkovice 33" src="${FARM.david.mapEmbed}" class="w-full h-52 rounded-xl border border-slate-200" loading="lazy"></iframe>
+              </div>
+              <div class="bg-white p-5 rounded-2xl border border-slate-200">
+                <p class="text-xs font-bold text-slate-900 mb-2">2. Políčko Rovná (${FARM.eva.gps}) u Rovné 68</p>
+                <iframe title="Rovná GPS" src="${FARM.eva.mapEmbedField}" class="w-full h-52 rounded-xl border border-slate-200" loading="lazy"></iframe>
               </div>
             </div>
           </div>
@@ -736,281 +696,57 @@
     }
 
     // ============================================================================
-    // VARIANTA 8: BENTO GRID 2026 (MODERNÍ DLAŽDICE)
+    // LOGIKA PŘEPÍNÁNÍ 10 VIZUÁLNÍCH DESIGNŮ (?variant=1..10)
     // ============================================================================
-    function renderVariant8() {
-      return `
-        <div class="max-w-6xl mx-auto px-4 py-8">
-          <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <!-- Hlavní Hero dlaždice -->
-            <div class="md:col-span-2 bg-stone-900 text-white p-8 rounded-3xl flex flex-col justify-between">
-              <span class="text-xs font-mono-code text-emerald-400">DEF FARM • STRUKTURA 2 OSVČ</span>
-              <div class="my-6">
-                <h1 class="text-3xl font-extrabold leading-tight">Dvě rodinná hospodářství na Strakonicku a Volyňsku</h1>
-                <p class="text-xs text-stone-400 mt-2">Ing. David Filip (k.ú. Strunkovice nad Volyňkou, k.ú. Volyně) & Bc. Eva Pitelková (k.ú. Rovná).</p>
-              </div>
-              <div class="flex flex-wrap gap-2">
-                <a href="tel:${DATA.david.phoneRaw}" class="bg-emerald-600 text-white text-xs font-bold px-4 py-2 rounded-xl">📞 David: ${DATA.david.phone}</a>
-                <a href="tel:${DATA.eva.phoneRaw}" class="bg-stone-800 text-emerald-300 border border-stone-700 text-xs font-bold px-4 py-2 rounded-xl">📞 Bc. Eva: ${DATA.eva.phone}</a>
-              </div>
-            </div>
-
-            <!-- Dlaždice: Bc. Eva Pitelková -->
-            <div class="bg-emerald-800 text-white p-6 rounded-3xl flex flex-col justify-between">
-              <div>
-                <span class="text-[11px] font-mono-code bg-emerald-950 px-2 py-0.5 rounded">IČO: ${DATA.eva.ico}</span>
-                <h2 class="text-xl font-bold mt-3">${DATA.eva.name}</h2>
-                <p class="text-xs text-emerald-100 mt-1">Výhradně <strong>k.ú. Rovná</strong>. Zázemí: <strong>Rovná 68</strong>.</p>
-              </div>
-              <div class="mt-4 pt-3 border-t border-emerald-700 text-xs space-y-1">
-                <div>📞 ${DATA.eva.phone}</div>
-                <div class="truncate">✉️ ${DATA.eva.email}</div>
-              </div>
-            </div>
-
-            <!-- Dlaždice: Ing. David Filip -->
-            <div class="bg-white p-6 rounded-3xl border border-stone-200 flex flex-col justify-between">
-              <div>
-                <span class="text-[11px] font-mono-code bg-stone-100 px-2 py-0.5 rounded">IČO: ${DATA.david.ico}</span>
-                <h2 class="text-xl font-bold text-stone-900 mt-3">${DATA.david.name}</h2>
-                <p class="text-xs text-stone-600 mt-1">Výhradně <strong>k.ú. Strunkovice nad Volyňkou a k.ú. Volyně</strong>.</p>
-              </div>
-              <div class="mt-4 pt-3 border-t border-stone-100 text-xs space-y-1 text-stone-700">
-                <div>📍 Strunkovice n. V. 33</div>
-                <div>📞 ${DATA.david.phone}</div>
-              </div>
-            </div>
-
-            <!-- Dlaždice: 4 odrůdy česneku -->
-            <div class="md:col-span-2 bg-white p-6 rounded-3xl border border-stone-200">
-              <div class="flex justify-between items-center mb-3">
-                <h3 class="font-extrabold text-lg text-stone-900">🧄 Český ozimý česnek (Sklizeň Červenec)</h3>
-                <span class="text-xs bg-amber-100 text-amber-900 font-bold px-2.5 py-0.5 rounded">4 odrůdy</span>
-              </div>
-              <div class="grid grid-cols-2 gap-2.5 text-xs">
-                ${DATA.garlic.map(g => `
-                  <div class="bg-stone-50 p-3 rounded-xl border border-stone-200">
-                    <strong class="text-stone-900">${g.name}</strong> <span class="text-stone-500">(${g.type})</span>
-                    <div class="text-stone-600 mt-0.5">${g.cloves}</div>
-                  </div>
-                `).join('')}
-              </div>
-            </div>
-
-            <!-- Dlaždice: GPS Políčka Rovná -->
-            <div class="bg-amber-50 p-6 rounded-3xl border border-amber-200 flex flex-col justify-between">
-              <div>
-                <span class="text-[10px] font-bold uppercase text-amber-800">Přesná poloha pěstování</span>
-                <h3 class="font-bold text-stone-900 mt-1">Políčko v k.ú. Rovná</h3>
-                <p class="font-mono-code text-xs font-bold text-emerald-900 mt-2">${DATA.eva.fieldGps}</p>
-                <p class="text-xs text-stone-600 mt-1">Česnek, levandule, výhledově jahody a zelenina.</p>
-              </div>
-              <a href="${DATA.eva.mapLinkField}" target="_blank" class="mt-4 block text-center bg-amber-900 text-white text-xs font-bold py-2 rounded-xl">
-                📍 Ukázat bod na mapě
-              </a>
-            </div>
-
-            <!-- Dlaždice: Pila Strunkovice -->
-            <div class="bg-stone-200 p-6 rounded-3xl flex flex-col justify-between">
-              <div>
-                <span class="text-[10px] font-bold uppercase text-stone-600">Přidružená výroba</span>
-                <h3 class="font-bold text-stone-900 mt-1">🪵 Pila Strunkovice 33</h3>
-                <p class="text-xs text-stone-700 mt-2">Pásový pořez kulatiny, stavební hranoly, prkna a latě na zakázku.</p>
-              </div>
-              <a href="tel:${DATA.david.phoneRaw}" class="mt-4 block text-center bg-stone-900 text-white text-xs font-bold py-2 rounded-xl">
-                📞 Poptat řezivo
-              </a>
-            </div>
-          </div>
-        </div>
-      `;
-    }
-
-    // ============================================================================
-    // VARIANTA 9: KOMPAKTNÍ MOBILNÍ VIZITKA (DIRECT-ACTION CARD)
-    // ============================================================================
-    function renderVariant9() {
-      return `
-        <div class="max-w-xl mx-auto px-4 py-8 space-y-4">
-          <div class="bg-stone-900 text-white p-6 rounded-3xl text-center">
-            <h1 class="text-2xl font-extrabold text-emerald-400">DEF Farm – Rychlý rozcestník</h1>
-            <p class="text-xs text-stone-300 mt-1">Klikněte přímo na hospodáře, se kterým potřebujete mluvit nebo k němuž jedete:</p>
-          </div>
-
-          <!-- Rychlá karta 1: Bc. Eva Pitelková -->
-          <div class="bg-white p-6 rounded-3xl border-2 border-emerald-600 shadow-sm space-y-4">
-            <div class="flex justify-between items-start">
-              <div>
-                <span class="text-xs font-bold uppercase text-emerald-700">Česnek, levandule, prodej ze dvora</span>
-                <h2 class="text-2xl font-extrabold text-stone-900">${DATA.eva.name}</h2>
-                <p class="text-xs text-stone-500">IČO: ${DATA.eva.ico} • Výhradně ${DATA.eva.cadastral}</p>
-              </div>
-              <span class="bg-emerald-100 text-emerald-900 text-xs font-bold px-2.5 py-1 rounded-lg">Rovná 68</span>
-            </div>
-            <div class="text-xs text-stone-700 bg-stone-50 p-3 rounded-xl space-y-1">
-              <div>🧄 <strong>Odrůdy česneku:</strong> Bjetin, Slavín II, Rusinka, Nellinka</div>
-              <div>📍 <strong>GPS políčka:</strong> <span class="font-mono-code font-bold">${DATA.eva.fieldGps}</span></div>
-            </div>
-            <div class="grid grid-cols-2 gap-2.5">
-              <a href="tel:${DATA.eva.phoneRaw}" class="bg-emerald-600 text-white font-bold py-3 rounded-xl text-center text-xs">
-                📞 Volat: ${DATA.eva.phone}
-              </a>
-              <a href="mailto:${DATA.eva.email}" class="bg-stone-100 text-stone-900 font-bold py-3 rounded-xl text-center text-xs">
-                ✉️ Napsat e-mail
-              </a>
-            </div>
-            <a href="${DATA.eva.mapLinkField}" target="_blank" class="block w-full bg-emerald-50 text-emerald-900 border border-emerald-200 font-bold py-2.5 rounded-xl text-center text-xs">
-              🧭 Navigovat na políčko v Rovné (${DATA.eva.fieldGps})
-            </a>
-          </div>
-
-          <!-- Rychlá karta 2: Ing. David Filip -->
-          <div class="bg-white p-6 rounded-3xl border-2 border-stone-900 shadow-sm space-y-4">
-            <div class="flex justify-between items-start">
-              <div>
-                <span class="text-xs font-bold uppercase text-stone-600">Polní výroba, skot, ovce, česnek & Pila</span>
-                <h2 class="text-2xl font-extrabold text-stone-900">${DATA.david.name}</h2>
-                <p class="text-xs text-stone-500">IČO: ${DATA.david.ico} • ${DATA.david.cadastral}</p>
-              </div>
-              <span class="bg-stone-200 text-stone-900 text-xs font-bold px-2.5 py-1 rounded-lg">Strunkovice 33</span>
-            </div>
-            <div class="text-xs text-stone-700 bg-stone-50 p-3 rounded-xl space-y-1">
-              <div>🌾 <strong>Komodity:</strong> Obiloviny, řepka, pícniny, česnek, chov ovcí</div>
-              <div>🪵 <strong>Pilařská výroba:</strong> Pořez kulatiny a stavební řezivo</div>
-            </div>
-            <div class="grid grid-cols-2 gap-2.5">
-              <a href="tel:${DATA.david.phoneRaw}" class="bg-stone-900 text-white font-bold py-3 rounded-xl text-center text-xs">
-                📞 Volat: ${DATA.david.phone}
-              </a>
-              <a href="mailto:${DATA.david.email}" class="bg-stone-100 text-stone-900 font-bold py-3 rounded-xl text-center text-xs">
-                ✉️ Napsat e-mail
-              </a>
-            </div>
-            <a href="${DATA.david.mapLink}" target="_blank" class="block w-full bg-stone-100 text-stone-900 border border-stone-300 font-bold py-2.5 rounded-xl text-center text-xs">
-              🧭 Navigovat do dvora: Strunkovice nad Volyňkou 33
-            </a>
-          </div>
-        </div>
-      `;
-    }
-
-    // ============================================================================
-    // VARIANTA 10: FARMÁŘSKÝ ZPRAVODAJ (EDITORIAL & STORYTELLING)
-    // ============================================================================
-    function renderVariant10() {
-      return `
-        <div class="max-w-4xl mx-auto px-4 py-12 bg-[#faf8f5] border-x border-stone-200">
-          <div class="text-center border-b-2 border-stone-900 pb-8 mb-10">
-            <div class="text-xs uppercase tracking-widest text-stone-500 font-bold mb-2">Pošumavský hospodářský list • Strunkovice nad Volyňkou & Rovná u Strakonic</div>
-            <h1 class="font-serif-editorial text-5xl sm:text-6xl font-bold text-stone-900">DEF Farm</h1>
-            <p class="font-serif-editorial italic text-xl text-stone-600 mt-2">
-              „Dva samostatní hospodáři, dvě katastrální působiště, jedna vize poctivého zemědělství.“
-            </p>
-          </div>
-
-          <div class="grid md:grid-cols-2 gap-10 mb-12">
-            <div>
-              <h2 class="font-serif-editorial text-2xl font-bold text-stone-900 border-b border-stone-300 pb-2 mb-3">
-                1. Hospodářství Strunkovice a Volyně
-              </h2>
-              <p class="text-sm text-stone-700 leading-relaxed mb-4">
-                Podnik <strong>${DATA.david.name}</strong> (IČO ${DATA.david.ico}) se sídlem ve <strong>Strunkovicích nad Volyňkou 33</strong> obhospodařuje ornou půdu a louky výhradně v <strong>k.ú. Strunkovice nad Volyňkou a k.ú. Volyně</strong>. Těžištěm je pěstování obilovin, řepky, pícnin, sadba ozimého česneku, pastevní chov ovcí a přidružená pásová pila.
-              </p>
-              <div class="text-xs font-mono-code bg-white p-3 rounded border border-stone-300">
-                Kontakt: <a href="tel:${DATA.david.phoneRaw}" class="font-bold underline">${DATA.david.phone}</a> | ${DATA.david.email}
-              </div>
-            </div>
-
-            <div>
-              <h2 class="font-serif-editorial text-2xl font-bold text-stone-900 border-b border-stone-300 pb-2 mb-3">
-                2. Hospodářství v k.ú. Rovná
-              </h2>
-              <p class="text-sm text-stone-700 leading-relaxed mb-4">
-                Podnik <strong>${DATA.eva.name}</strong> (IČO ${DATA.eva.ico}) působí výhradně v <strong>k.ú. Rovná u Strakonic</strong> se zázemím na adrese <strong>Rovná 68</strong>. Na pěstebním políčku (<span class="font-mono-code">${DATA.eva.fieldGps}</span>) se věnuje ručně ošetřovanému česneku (<em>Bjetin, Slavín II, Rusinka, Nellinka</em>), levanduli a připravuje výsadbu jahod a zeleniny.
-              </p>
-              <div class="text-xs font-mono-code bg-white p-3 rounded border border-stone-300">
-                Kontakt: <a href="tel:${DATA.eva.phoneRaw}" class="font-bold underline">${DATA.eva.phone}</a> | ${DATA.eva.email}
-              </div>
-            </div>
-          </div>
-
-          <div class="bg-white p-6 rounded-xl border border-stone-300">
-            <h3 class="font-serif-editorial text-xl font-bold text-stone-900 mb-2">Kde přesně roste náš česnek a levandule v Rovné</h3>
-            <p class="text-xs text-stone-600 mb-4">Přesné zaměření pěstební parcely Bc. Evy Pitelkové (${DATA.eva.fieldGps}) nedaleko č.p. Rovná 68:</p>
-            <iframe title="Políčko v Rovné" src="${DATA.eva.mapEmbedField}" class="w-full h-64 rounded-lg border border-stone-300"></iframe>
-          </div>
-        </div>
-      `;
-    }
-
-    // ============================================================================
-    // INTERAKTIVNÍ POMOCNÉ FUNKCE PRO VARIANTU 2 A VARIANTU 3
-    // ============================================================================
-    window.filterCatalog = function(cat) {
-      document.querySelectorAll('.catalog-item').forEach(el => {
-        el.style.display = (cat === 'all' || el.dataset.cat === cat) ? 'flex' : 'none';
-      });
-    };
-
-    window.switchAppTab = function(tabId) {
-      document.querySelectorAll('.app-tab-pane').forEach(el => el.classList.add('hidden'));
-      document.querySelectorAll('.app-tab-btn').forEach(btn => {
-        btn.classList.remove('bg-emerald-600', 'text-white');
-        btn.classList.add('text-stone-400');
-      });
-      const target = document.getElementById(tabId);
-      const activeBtn = document.getElementById('btn-' + tabId);
-      if (target) target.classList.remove('hidden');
-      if (activeBtn) {
-        activeBtn.classList.add('bg-emerald-600', 'text-white');
-        activeBtn.classList.remove('text-stone-400');
-      }
-    };
-
-    // ============================================================================
-    // LOGIKA PŘEPÍNÁNÍ VARIANT (?variant=1..10 + Šipky klávesnice)
-    // ============================================================================
-    function getCurrentVariantIndex() {
+    function getActiveIndex() {
       const params = new URLSearchParams(window.location.search);
       const v = params.get('variant');
-      const idx = VARIANTS.findIndex(item => item.id === v);
+      const idx = DESIGNS.findIndex(d => d.id === v);
       return idx >= 0 ? idx : 0;
     }
 
-    function setVariantByIndex(index) {
-      const wrapped = (index + VARIANTS.length) % VARIANTS.length;
-      const chosen = VARIANTS[wrapped];
+    function selectDesign(index) {
+      const wrapped = (index + DESIGNS.length) % DESIGNS.length;
+      const d = DESIGNS[wrapped];
 
-      // Aktualizace URL bez reloadu
       const url = new URL(window.location);
-      url.searchParams.set('variant', chosen.id);
+      url.searchParams.set('variant', d.id);
       window.history.replaceState({}, '', url);
 
-      // Vykreslení
-      document.getElementById('prototype-root').innerHTML = chosen.render();
-      document.getElementById('variant-num').textContent = chosen.id;
-      document.getElementById('variant-name').textContent = `${chosen.id}. ${chosen.name}`;
-      document.getElementById('state-banner-title').textContent = `Varianta ${chosen.id}/10: ${chosen.name} — ${chosen.desc}`;
+      // Vykreslení vybraného designu
+      const root = document.getElementById('design-root');
+      root.innerHTML = d.isSidebarLayout ? renderSidebarDesign() : renderStandardDesign(d);
+
+      // Aktualizace lišty
+      document.getElementById('variant-name').textContent = `${d.id}/10: ${d.title}`;
+      document.getElementById('state-banner-title').textContent = `Design ${d.id}/10: ${d.title} — ${d.subtitle}`;
+
+      // Aktualizace číselných tlačítek 1..10
+      const dots = document.getElementById('dots-container');
+      dots.innerHTML = DESIGNS.map((item, i) => `
+        <button
+          type="button"
+          onclick="selectDesign(${i})"
+          class="w-6 h-6 rounded-md text-[11px] font-bold transition ${i === wrapped ? 'bg-emerald-500 text-stone-950 scale-110' : 'bg-stone-800 text-stone-400 hover:bg-stone-700 hover:text-white'}"
+          title="${item.title}">
+          ${item.id}
+        </button>
+      `).join('');
+
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    document.getElementById('prev-variant').addEventListener('click', () => {
-      setVariantByIndex(getCurrentVariantIndex() - 1);
-    });
-
-    document.getElementById('next-variant').addEventListener('click', () => {
-      setVariantByIndex(getCurrentVariantIndex() + 1);
-    });
+    document.getElementById('prev-variant').addEventListener('click', () => selectDesign(getActiveIndex() - 1));
+    document.getElementById('next-variant').addEventListener('click', () => selectDesign(getActiveIndex() + 1));
 
     window.addEventListener('keydown', (e) => {
       const tag = document.activeElement ? document.activeElement.tagName.toLowerCase() : '';
       if (tag === 'input' || tag === 'textarea' || document.activeElement?.isContentEditable) return;
-      if (e.key === 'ArrowLeft') setVariantByIndex(getCurrentVariantIndex() - 1);
-      if (e.key === 'ArrowRight') setVariantByIndex(getCurrentVariantIndex() + 1);
+      if (e.key === 'ArrowLeft') selectDesign(getActiveIndex() - 1);
+      if (e.key === 'ArrowRight') selectDesign(getActiveIndex() + 1);
     });
 
-    // Inicializace při načtení
-    setVariantByIndex(getCurrentVariantIndex());
+    selectDesign(getActiveIndex());
   </script>
 </body>
 </html>
