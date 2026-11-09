@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="cs" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DEF Farm | Rodinné hospodaření v Pošumaví</title>
+  <meta name="description" content="Rodinná farma hospodařící v Pošumaví na Strakonicku a Volyňsku. Pěstování českého česneku, polních plodin, chov zvířat a péče o půdu.">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+  </style>
+</head>
+<body class="bg-stone-50 text-stone-800 antialiased selection:bg-emerald-800 selection:text-white">
+
+  <!-- Navigační lišta -->
+  <header class="sticky top-0 z-50 bg-stone-900/95 backdrop-blur text-stone-100 border-b border-stone-800">
+    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="#" class="font-extrabold tracking-tight text-xl text-emerald-400">DEF Farm</a>
+      <nav class="hidden md:flex space-x-6 text-sm font-medium">
+        <a href="#prodej" class="hover:text-emerald-400 transition">Prodej ze dvora</a>
+        <a href="#produkce" class="hover:text-emerald-400 transition">Polní výroba</a>
+        <a href="#puda" class="hover:text-emerald-400 transition">Péče o půdu</a>
+        <a href="#o-nas" class="hover:text-emerald-400 transition">O farmě</a>
+        <a href="#kontakt" class="hover:text-emerald-400 transition">Kontakt</a>
+      </nav>
+      <a href="#kontakt" class="bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-lg text-sm font-semibold transition">
+        Kde nás najdete
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero sekce -->
+  <section class="relative bg-stone-900 text-white py-24 md:py-32 border-b border-stone-800">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <span class="inline-block bg-emerald-950 text-emerald-400 border border-emerald-800 text-xs uppercase tracking-wider font-bold px-3 py-1 rounded-full mb-6">
+        Pošumaví • Strakonicko • Volyňsko
+      </span>
+      <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight text-stone-100">
+        Poctivé hospodaření s úctou k půdě a krajině
+      </h1>
+      <p class="mt-6 text-lg md:text-xl text-stone-300 max-w-2xl mx-auto font-normal leading-relaxed">
+        Jsme mladá rodinná farma. Na pozemcích v okolí Strunkovic nad Volyňkou, Volyně a Rovné pěstujeme tradiční plodiny, český česnek a pečujeme o půdu pro další generace.
+      </p>
+      <div class="mt-8 flex flex-wrap justify-center gap-4">
+        <a href="#prodej" class="bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-6 py-3 rounded-lg shadow-sm transition">
+          Aktuální sezónní nabídka
+        </a>
+        <a href="#puda" class="bg-stone-800 hover:bg-stone-700 text-stone-200 border border-stone-700 font-semibold px-6 py-3 rounded-lg transition">
+          Mám pozemky k pachtu
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sekce: Sezónní nabídka / Prodej ze dvora -->
+  <section id="prodej" class="py-20 max-w-6xl mx-auto px-4">
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <h2 class="text-3xl font-bold tracking-tight text-stone-900">Sezónní prodej ze dvora</h2>
+      <p class="mt-3 text-stone-600">
+        Zakládáme si na čerstvosti a lokálním původu. Nabízíme to, co sami sázíme, sklízíme a zpracováváme.
+      </p>
+    </div>
+
+    <!-- Aktuální stav / Banner -->
+    <div class="bg-amber-50 border border-amber-200 rounded-xl p-5 mb-10 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        <span class="text-xs font-bold uppercase tracking-wider text-amber-800 bg-amber-200/60 px-2.5 py-0.5 rounded">Aktuálně na polích</span>
+        <p class="text-amber-950 font-medium mt-1">Zasázeli jsme ozimý český česnek pro sklizeň 2027. Přijímáme předběžné poptávky na sadbu i konzum.</p>
+      </div>
+      <a href="#kontakt" class="whitespace-nowrap text-sm font-semibold text-amber-900 underline hover:text-amber-700">Ozvěte se nám &rarr;</a>
+    </div>
+
+    <!-- Mřížka plodin -->
+    <div class="grid md:grid-cols-3 gap-8">
+      
+      <!-- Karta: Česnek -->
+      <div class="bg-white rounded-2xl p-6 border border-stone-200 shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex justify-between items-start mb-4">
+            <h3 class="text-xl font-bold text-stone-900">Pravý český česnek</h3>
+            <span class="text-xs font-bold uppercase bg-stone-100 text-stone-700 px-2 py-1 rounded">Sklizeň: Červenec</span>
+          </div>
+          <p class="text-stone-600 text-sm mb-4 leading-relaxed">
+            Vyhlášené ozimé odrůdy pěstované bez nadbytečné chemie. Vhodné k okamžité spotřebě, dlouhodobému uskladnění i na podzimní sadbu.
+          </p>
+          <div class="border-t border-stone-100 pt-3 mb-4">
+            <p class="text-xs font-bold text-stone-400 uppercase tracking-wider mb-2">Vysazené odrůdy:</p>
+            <ul class="text-xs space-y-1 text-stone-700">
+              <li><strong class="font-semibold text-stone-900">• Bjetin:</strong> Špičkový raný paličák, ostrá ušlechtilá chuť.</li>
+              <li><strong class="font-semibold text-stone-900">• Slavín:</strong> Poloraný fialový paličák s vysokou skladovatelností.</li>
+              <li><strong class="font-semibold text-stone-900">• Nellinka:</strong> Výnosný ozimý nepaličák, jemné stroužky, drží až do jara.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="border-t border-stone-100 pt-4 mt-auto">
+          <p class="text-xs text-stone-500">Orientační cena: <span class="font-semibold text-stone-800">Dle odrůdy a ročníku (upřesníme před sklizní)</span></p>
+        </div>
+      </div>
+
+      <!-- Karta: Plánované plodiny -->
+      <div class="bg-white rounded-2xl p-6 border border-stone-200 shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex justify-between items-start mb-4">
+            <h3 class="text-xl font-bold text-stone-900">Levandule & Drobné ovoce</h3>
+            <span class="text-xs font-bold uppercase bg-stone-100 text-stone-700 px-2 py-1 rounded">V přípravě</span>
+          </div>
+          <p class="text-stone-600 text-sm mb-4 leading-relaxed">
+            Rozšiřujeme výměru o trvalé kultury. Připravujeme levandulové plochy pro vazbu i sušení a jahodové záhony pro lokální odběr.
+          </p>
+          <div class="border-t border-stone-100 pt-3">
+            <p class="text-xs font-bold text-stone-400 uppercase tracking-wider mb-2">Plánovaný sortiment:</p>
+            <p class="text-xs text-stone-600 leading-relaxed">Čerstvě řezané i sušené levandulové kytice, sirupy, sezónní jahody a zahradní přebytky.</p>
+          </div>
+        </div>
+        <div class="border-t border-stone-100 pt-4 mt-auto">
+          <p class="text-xs text-stone-500">Dostupnost: <span class="font-semibold text-stone-800">Sezóna 2027</span></p>
+        </div>
+      </div>
+
+      <!-- Karta: Pravidla odběru -->
+      <div class="bg-stone-100 rounded-2xl p-6 border border-stone-300 flex flex-col justify-between">
+        <div>
+          <h3 class="text-xl font-bold text-stone-900 mb-3">Jak u nás nakoupit?</h3>
+          <ul class="text-sm space-y-3 text-stone-700">
+            <li class="flex items-start gap-2">
+              <span class="text-emerald-700 font-bold">1.</span>
+              <span><strong>Zavolejte předem:</strong> Připravíme vám bedýnku nebo pytel přesně na dohodnutý čas.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-emerald-700 font-bold">2.</span>
+              <span><strong>Výdejní místa:</strong> Strunkovice nad Volyňkou, případně závoz na trase Rovná u Strakonic – Volyně.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-emerald-700 font-bold">3.</span>
+              <span><strong>Platba:</strong> V hotovosti nebo jednoduše přes statický QR kód přímo z bankovnictví v mobilu.</span>
+            </li>
+          </ul>
+        </div>
+        <div class="mt-6 pt-4 border-t border-stone-300">
+          <p class="text-xs text-stone-600">Výhledově připravujeme krytý samoobslužný stánek se stálou nabídkou.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Sekce: Velkoobjemová výroba -->
+  <section id="produkce" class="py-20 bg-stone-100 border-y border-stone-200">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <h2 class="text-3xl font-bold tracking-tight text-stone-900">Polní plodiny a velkoobjemový odbyt</h2>
+        <p class="mt-3 text-stone-600">
+          Obhospodařujeme ornou půdu i trvalé travní porosty. Dodáváme suroviny pro potravinářství, krmné účely a partnery v regionu.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-xl border border-stone-200 shadow-sm">
+          <h4 class="font-bold text-stone-900 text-lg mb-2">Potravinářské & krmné obilí</h4>
+          <p class="text-sm text-stone-600 leading-relaxed">
+            Pšenice, ječmen a oves pěstované s důrazem na objemovou hmotnost a čistotu zrna. Odběr po dohodě ve vacích (Big Bag) i volně ložené.
+          </p>
+        </div>
+        <div class="bg-white p-6 rounded-xl border border-stone-200 shadow-sm">
+          <h4 class="font-bold text-stone-900 text-lg mb-2">Olejniny & Pícniny</h4>
+          <p class="text-sm text-stone-600 leading-relaxed">
+            Řepka olejná a travní porosty pro zajištění kvalitního sena a senáže. Důsledné dodržování agrotechnických lhůt a osevních postupů.
+          </p>
+        </div>
+        <div class="bg-white p-6 rounded-xl border border-stone-200 shadow-sm">
+          <h4 class="font-bold text-stone-900 text-lg mb-2">Chov hospodářských zvířat</h4>
+          <p class="text-sm text-stone-600 leading-relaxed">
+            Udržování trvalých travních porostů a luk pastevním chovem (ovce a výhledově extenzivní masný skot). Přirozená údržba rázu pošumavské krajiny.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sekce: Pro vlastníky půdy -->
+  <section id="puda" class="py-20 max-w-5xl mx-auto px-4">
+    <div class="bg-stone-900 text-white rounded-3xl p-8 md:p-12 border border-stone-800 shadow-xl">
+      <div class="max-w-2xl">
+        <span class="text-xs uppercase font-bold tracking-wider text-emerald-400 bg-emerald-950 px-3 py-1 rounded-full border border-emerald-800">
+          Pro vlastníky půdy
+        </span>
+        <h2 class="text-3xl font-extrabold mt-4 mb-4 text-stone-100">
+          Vlastníte ornou půdu nebo louky na Volyňsku či Strakonicku?
+        </h2>
+        <p class="text-stone-300 text-base leading-relaxed mb-6">
+          Půdu nevnímáme jako vytěžitelný zdroj, ale jako dědictví. Dbáme na organické hnojení, vracení živin, střídání plodin, zachování mezí a ochranu půdy před vodní erozí.
+        </p>
+        <ul class="text-sm text-stone-300 space-y-2 mb-8">
+          <li class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-emerald-400 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+            <span>Férová výše pachtovného s garantovanou a včasnou platbou.</span>
+          </li>
+          <li class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-emerald-400 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+            <span>Kompletní právní servis a přepis pachtovních smluv vyřídíme za vás.</span>
+          </li>
+          <li class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-emerald-400 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+            <span>Možnost vyplácení pachtovného ve finanční formě nebo naturáliích (obilí, česnek).</span>
+          </li>
+        </ul>
+        <a href="#kontakt" class="inline-block bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-6 py-3 rounded-lg transition">
+          Nezávazně probrat pachtovní smlouvu
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sekce: O farmě & Spolupráce (včetně pily) -->
+  <section id="o-nas" class="py-16 max-w-6xl mx-auto px-4">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 class="text-3xl font-bold tracking-tight text-stone-900 mb-4">Příběh DEF Farm</h2>
+        <p class="text-stone-600 leading-relaxed mb-4">
+          DEF Farm vzniká spojením rodinné zemědělské tradice a nové energie. Název v sobě nese iniciály nás – lidí, kteří na polích reálně pracují a ručí za každou sklizenou hlavičku česneku nebo sklizený hektar.
+        </p>
+        <p class="text-stone-600 leading-relaxed mb-6">
+          Kombinujeme moderní agronomické poznatky s prověřenými sedláckými postupy. Naším cílem není honba za maximálním výnosem na úkor půdy, ale trvale udržitelné rodinné hospodářství.
+        </p>
+      </div>
+
+      <!-- Box: Přidružená výroba (Pila) -->
+      <div class="bg-stone-100 p-8 rounded-2xl border border-stone-200">
+        <span class="text-xs font-bold uppercase tracking-wider text-stone-500">Přidružené rodinné aktivity</span>
+        <h3 class="text-xl font-bold text-stone-900 mt-2 mb-3">Zpracování dřeva & Pilařská výroba</h3>
+        <p class="text-sm text-stone-600 leading-relaxed mb-4">
+          Vedle zemědělské výroby se v rámci rodinných aktivit ve Strunkovicích nad Volyňkou věnujeme také pásovému pořezu kulatiny, výrobě stavebního řeziva, hranolů a prken na míru.
+        </p>
+        <p class="text-xs text-stone-500 font-medium">
+          Máte zájem o pořez nebo řezivo? Rádi vám předáme kontakt na naši rodinnou pilu.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sekce: Kontakt -->
+  <footer id="kontakt" class="bg-stone-900 text-stone-300 py-16 border-t border-stone-800">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid md:grid-cols-3 gap-10 mb-12">
+        <div>
+          <h4 class="text-white font-bold text-lg mb-4">DEF Farm</h4>
+          <p class="text-sm leading-relaxed text-stone-400 mb-4">
+            Rodinná zemědělská výroba, pěstování česneku, polních plodin a péče o půdu v Pošumaví.
+          </p>
+          <p class="text-xs text-stone-500">IČO: [Vaše IČO]</p>
+        </div>
+
+        <div>
+          <h4 class="text-white font-bold text-lg mb-4">Výdejní místa & Působiště</h4>
+          <p class="text-sm text-stone-300 font-medium mb-1">Základna a hospodářský dvůr:</p>
+          <p class="text-sm text-stone-400 mb-3">Strunkovice nad Volyňkou (okres Strakonice)</p>
+          <p class="text-sm text-stone-300 font-medium mb-1">Pěstební plochy & předání:</p>
+          <p class="text-sm text-stone-400">Rovná u Strakonic • Volyně a okolí</p>
+        </div>
+
+        <div>
+          <h4 class="text-white font-bold text-lg mb-4">Spojte se s námi</h4>
+          <p class="text-sm text-stone-400 mb-3">Před návštěvou nebo pro odběr ze dvora prosíme vždy volejte předem:</p>
+          <div class="space-y-2">
+            <a href="tel:+420725860671" class="block text-emerald-400 font-bold text-lg hover:underline">
+              +420 725 860 671
+            </a>
+            <a href="mailto:info@deffarm.cz" class="block text-sm text-stone-400 hover:text-white transition">
+              filipdavid33@gmail.com
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-stone-800 pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-stone-500">
+        <p>&copy; 2026 DEF Farm. Všechna práva vyhrazena.</p>
+        <p class="mt-2 sm:mt-0">Hospodaříme v Pošumaví</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
